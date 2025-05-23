@@ -1,48 +1,48 @@
-import { ArrowRight } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import Hero from "@/components/hero"
-import RequestForm from "@/components/request-form"
-import AboutSnippet from "@/components/about-snippet"
-import Testimonials from "@/components/testimonials"
-import ContactForm from "@/components/contact-form"
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Hero from "@/components/hero";
+import RequestForm from "@/components/request-form";
+import AboutSnippet from "@/components/about-snippet";
+import Testimonials from "@/components/testimonials";
+import ContactForm from "@/components/contact-form";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16 md:gap-24">
+    <div className="flex flex-col">
       <Hero />
 
-      <section id="about-snippet" className="container">
+      <section id="about-snippet" className="container md:mx-auto">
         <AboutSnippet />
       </section>
 
-      <section id="request" className="container">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Work with Me</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Interested in consulting, hiring, or collaboration? Let me know how I can help.
-            </p>
-          </div>
-          <RequestForm />
-        </div>
+      <section id="request">
+        <RequestForm />
       </section>
 
       <section id="testimonials" className="bg-muted py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">What People Say</h2>
-            <p className="mt-4 text-lg text-muted-foreground">Feedback from clients and collaborators</p>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              What People Say
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Feedback from clients and collaborators
+            </p>
           </div>
           <Testimonials />
         </div>
       </section>
 
-      <section id="books-preview" className="container">
+      <section id="books-preview" className="p-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Published Works</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Explore my books on leadership and data analytics</p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Published Works
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Explore my books on leadership and data analytics
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -75,7 +75,7 @@ export default function Home() {
           </div>
 
           <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-0 group-hover:opacity-10 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative flex items-center gap-6 bg-card p-6 rounded-lg border">
               <div className="w-24 h-36 relative flex-shrink-0">
                 <Image
@@ -88,7 +88,9 @@ export default function Home() {
               </div>
               <div className="flex flex-col">
                 <h3 className="font-bold text-xl">IT Leadership Principles</h3>
-                <p className="text-sm text-muted-foreground mt-1">Guide to effective leadership in technology</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Guide to effective leadership in technology
+                </p>
                 <div className="mt-4">
                   <Button asChild>
                     <Link href="/books">
@@ -113,12 +115,16 @@ export default function Home() {
       <section id="contact" className="container mb-16">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Get in Touch</h2>
-            <p className="mt-4 text-lg text-muted-foreground">Have a question or want to connect? Send me a message.</p>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Get in Touch
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Have a question or want to connect? Send me a message.
+            </p>
           </div>
           <ContactForm />
         </div>
       </section>
     </div>
-  )
+  );
 }

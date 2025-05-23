@@ -1,181 +1,96 @@
-"use client";
-
-import type React from "react";
-
-import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { toast } from "@/components/ui/use-toast";
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight, UserPlus, Briefcase, Users } from "lucide-react";
 
-export default function RequestForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    requestType: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-
-    if (!formData.name || formData.name.length < 2) {
-      newErrors.name = "Name must be at least 2 characters.";
-    }
-
-    if (!formData.email || !/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address.";
-    }
-
-    if (!formData.requestType) {
-      newErrors.requestType = "Please select a request type.";
-    }
-
-    if (!formData.message || formData.message.length < 10) {
-      newErrors.message = "Message must be at least 10 characters.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSelectChange = (value: string) => {
-    setFormData((prev) => ({ ...prev, requestType: value }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-
-    if (!validateForm()) return;
-
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      console.log(formData);
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      toast({
-        title: "Request Submitted",
-        description: "Thank you for your request. I'll get back to you soon.",
-      });
-    }, 1500);
-  };
-
-  if (isSubmitted) {
-    return (
-      <div className="rounded-lg border bg-card p-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-          <CheckCircle2 className="h-6 w-6 text-primary" />
-        </div>
-        <h3 className="mt-4 text-xl font-semibold">Request Submitted</h3>
-        <p className="mt-2 text-muted-foreground">
-          Thank you for your request. I'll get back to you as soon as possible.
-        </p>
-        <Button className="mt-6" onClick={() => setIsSubmitted(false)}>
-          Submit Another Request
-        </Button>
-      </div>
-    );
-  }
-
+export default function ServicesSection() {
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="name">Name</Label>
-          <Input
-            id="name"
-            name="name"
-            placeholder="Your name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          {errors.name && (
-            <p className="text-sm font-medium text-destructive">
-              {errors.name}
+    <section className="w-full px-7 py-16 md:py-24 bg-gradient-to-b from-white to-slate-50">
+      <div className="container px-4 md:px-6 mx-auto">
+        <div className="text-center mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Work with Me
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Interested in consulting, hiring, or collaboration? Let me know
+              how I can help.
             </p>
-          )}
+          </div>
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            name="email"
-            placeholder="Your email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && (
-            <p className="text-sm font-medium text-destructive">
-              {errors.email}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {/* Hiring Column */}
+          <div className="flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all duration-300 group h-full">
+            <div className="w-16 h-16 flex items-center justify-center rounded-full bg-slate-100 text-slate-800 mb-6 group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300">
+              <UserPlus size={28} />
+            </div>
+            <h2 className="mb-4 text-2xl font-bold uppercase tracking-wide text-slate-900">
+              Hiring
+            </h2>
+            <p className="mb-8 text-center text-slate-600">
+              Looking for a BI Developer with expertise in SQL, Python, Tableau,
+              and Power BI? I specialize in designing and deploying BI solutions
+              that drive business outcomes.
             </p>
-          )}
+            <div className="mt-auto">
+              <Button className="bg-slate-800 hover:bg-slate-900 text-white group-hover:translate-y-[-2px] transition-transform duration-300 flex items-center gap-2">
+                Hiring Inquiry
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
+              </Button>
+            </div>
+          </div>
+
+          {/* Consulting Column */}
+          <div className="flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all duration-300 group h-full">
+            <div className="w-16 h-16 flex items-center justify-center rounded-full bg-slate-100 text-slate-800 mb-6 group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300">
+              <Briefcase size={28} />
+            </div>
+            <h2 className="mb-4 text-2xl font-bold uppercase tracking-wide text-slate-900">
+              Consulting
+            </h2>
+            <p className="mb-8 text-center text-slate-600">
+              Need help with data analysis, visualization, or BI implementation?
+              I offer consulting services in dashboard development, statistical
+              analysis, and AWS cloud solutions.
+            </p>
+            <div className="mt-auto">
+              <Button className="bg-slate-800 hover:bg-slate-900 text-white group-hover:translate-y-[-2px] transition-transform duration-300 flex items-center gap-2">
+                Consulting Request
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
+              </Button>
+            </div>
+          </div>
+
+          {/* Collaboration Column */}
+          <div className="flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all duration-300 group h-full">
+            <div className="w-16 h-16 flex items-center justify-center rounded-full bg-slate-100 text-slate-800 mb-6 group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300">
+              <Users size={28} />
+            </div>
+            <h2 className="mb-4 text-2xl font-bold uppercase tracking-wide text-slate-900">
+              Collaboration
+            </h2>
+            <p className="mb-8 text-center text-slate-600">
+              Interested in collaborating on data-driven projects? Let's partner
+              on developing innovative BI solutions, research projects, or data
+              analysis initiatives that deliver measurable results.
+            </p>
+            <div className="mt-auto">
+              <Button className="bg-slate-800 hover:bg-slate-900 text-white group-hover:translate-y-[-2px] transition-transform duration-300 flex items-center gap-2">
+                Collaboration Request
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="requestType">Request Type</Label>
-        <Select onValueChange={handleSelectChange} value={formData.requestType}>
-          <SelectTrigger id="requestType">
-            <SelectValue placeholder="Select a request type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="consulting">Consulting</SelectItem>
-            <SelectItem value="hiring">Hiring</SelectItem>
-            <SelectItem value="collaboration">Collaboration</SelectItem>
-            <SelectItem value="speaking">Speaking Engagement</SelectItem>
-            <SelectItem value="other">Other</SelectItem>
-          </SelectContent>
-        </Select>
-        {errors.requestType && (
-          <p className="text-sm font-medium text-destructive">
-            {errors.requestType}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="message">Message</Label>
-        <Textarea
-          id="message"
-          name="message"
-          placeholder="Please provide details about your request"
-          className="min-h-32"
-          value={formData.message}
-          onChange={handleChange}
-        />
-        {errors.message && (
-          <p className="text-sm font-medium text-destructive">
-            {errors.message}
-          </p>
-        )}
-      </div>
-
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Submitting..." : "Submit Request"}
-      </Button>
-    </form>
+    </section>
   );
 }

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { motion } from "motion/react"
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "motion/react";
 
 export default function AboutSnippet() {
   return (
@@ -13,19 +13,18 @@ export default function AboutSnippet() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="grid md:grid-cols-2 gap-8 items-center"
+      className="grid md:grid-cols-2 gap-8 items-center px-5"
     >
       <div className="space-y-4">
         <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
-        <p className="text-lg text-muted-foreground">
-          I'm Jeff Mitini Nkhoma, a Business Intelligence Specialist with over 15 years of experience transforming data
-          into actionable insights. As a Data Analyst Team Lead, I've helped organizations leverage their data assets to
-          achieve strategic objectives.
+        <p className="text-muted-foreground">
+          <span className="block">Hey, I'm Jeff</span>
+          I'm here to help you design, develop, and deploy BI solutions to drive
+          business impact. I spend my days my days leveraging data analysis,
+          data visualization, and statistical techniques to deliver strategic
+          insights.
         </p>
-        <p className="text-lg text-muted-foreground">
-          I'm also an author and the Principal of a Leadership & IT Institute, where I'm passionate about developing the
-          next generation of data professionals.
-        </p>
+
         <Button variant="outline" asChild>
           <Link href="/about" className="inline-flex items-center">
             Learn More About Me
@@ -53,5 +52,5 @@ export default function AboutSnippet() {
         </div>
       </motion.div>
     </motion.div>
-  )
+  );
 }

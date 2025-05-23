@@ -3,11 +3,18 @@
 import type React from "react";
 
 import { useState, type FormEvent } from "react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import { Label } from "./ui/label";
-import { toast } from "./ui/use-toast";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/components/ui/use-toast";
 import { CheckCircle2 } from "lucide-react";
 
 export default function ContactForm() {
@@ -16,6 +23,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    requestType: "",
     message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -29,6 +37,10 @@ export default function ContactForm() {
 
     if (!formData.email || !/^\S+@\S+\.\S+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address.";
+    }
+
+    if (!formData.requestType) {
+      newErrors.requestType = "Please select a request type.";
     }
 
     if (!formData.message || formData.message.length < 10) {
@@ -46,6 +58,10 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSelectChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, requestType: value }));
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
@@ -59,8 +75,8 @@ export default function ContactForm() {
       setIsSubmitting(false);
       setIsSubmitted(true);
       toast({
-        title: "Message Sent",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "Request Submitted",
+        description: "Thank you for your request. I'll get back to you soon.",
       });
     }, 1500);
   };
@@ -71,12 +87,12 @@ export default function ContactForm() {
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
           <CheckCircle2 className="h-6 w-6 text-primary" />
         </div>
-        <h3 className="mt-4 text-xl font-semibold">Message Sent</h3>
+        <h3 className="mt-4 text-xl font-semibold">Request Submitted</h3>
         <p className="mt-2 text-muted-foreground">
-          Thank you for your message. I'll get back to you as soon as possible.
+          Thank you for your request. I'll get back to you as soon as possible.
         </p>
         <Button className="mt-6" onClick={() => setIsSubmitted(false)}>
-          Send Another Message
+          Submit Another Request
         </Button>
       </div>
     );
@@ -120,11 +136,32 @@ export default function ContactForm() {
       </div>
 
       <div className="space-y-2">
+        <Label htmlFor="requestType">Request Type</Label>
+        <Select onValueChange={handleSelectChange} value={formData.requestType}>
+          <SelectTrigger id="requestType">
+            <SelectValue placeholder="Select a request type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="consulting">Consulting</SelectItem>
+            <SelectItem value="hiring">Hiring</SelectItem>
+            <SelectItem value="collaboration">Collaboration</SelectItem>
+
+            <SelectItem value="other">Other</SelectItem>
+          </SelectContent>
+        </Select>
+        {errors.requestType && (
+          <p className="text-sm font-medium text-destructive">
+            {errors.requestType}
+          </p>
+        )}
+      </div>
+
+      <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
         <Textarea
           id="message"
           name="message"
-          placeholder="Your message"
+          placeholder="Please provide details about your request"
           className="min-h-32"
           value={formData.message}
           onChange={handleChange}
@@ -137,7 +174,7 @@ export default function ContactForm() {
       </div>
 
       <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {isSubmitting ? "Submitting..." : "Submit Request"}
       </Button>
     </form>
   );
