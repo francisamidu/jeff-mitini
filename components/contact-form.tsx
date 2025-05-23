@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, SendIcon } from "lucide-react";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -173,8 +173,15 @@ export default function ContactForm() {
         )}
       </div>
 
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Submitting..." : "Submit Request"}
+      <Button type="submit" className="w-fit" disabled={isSubmitting}>
+        {isSubmitting ? (
+          "Submitting..."
+        ) : (
+          <>
+            <span>Submit Request</span>
+            <SendIcon className="rotate-45 h-4 w-4" />
+          </>
+        )}
       </Button>
     </form>
   );

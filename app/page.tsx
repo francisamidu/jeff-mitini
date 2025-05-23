@@ -114,13 +114,20 @@ export default function Home() {
 
       <section id="contact" className="container mb-16">
         <div className="mx-auto max-w-4xl">
-          <div className="text-center mb-8">
+          <div className="text-center mb-8 flex flex-col items-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Get in Touch
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Have a question or want to connect? Send me a message.
             </p>
+            <Image
+              src="/jeff.jpg"
+              className="rounded-full mt-4"
+              alt="Jeff"
+              width={200}
+              height={200}
+            />
           </div>
           <ContactForm />
         </div>

@@ -6,8 +6,9 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
-import { Menu, X, Database, Mail } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,10 +47,21 @@ export default function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
-            <Database className="h-6 w-6 text-primary" />
-            <span className="font-bold text-xl hidden sm:inline-block">
-              Jeff Mitini
-            </span>
+            <Image
+              src="/jeff.jpg"
+              className="rounded-full"
+              alt="Jeff"
+              width={40}
+              height={40}
+            />
+            <div className="flex flex-col">
+              <span className="font-bold text-xl hidden sm:inline-block">
+                Jeff Mitini
+              </span>
+              <span className="text-xs text-muted-foreground">
+                Data Analyst | BI Developer
+              </span>
+            </div>
           </Link>
         </div>
 
