@@ -13,8 +13,7 @@ const testimonials = [
       "Jeff's expertise in business intelligence transformed our organization's approach to data. His strategic insights helped us implement a comprehensive BI solution that has significantly improved our decision-making process.",
     author: "Sarah Johnson",
     title: "CTO, Global Tech Solutions",
-    avatar:
-      "/placeholder.svg?height=80&width=80&query=professional woman portrait",
+    avatar: "https://randomuser.me/api/portraits/women/1.jpg",
   },
   {
     id: 2,
@@ -22,8 +21,7 @@ const testimonials = [
       "Working with Jeff on our data analytics strategy was a game-changer. His ability to translate complex technical concepts into actionable business strategies is remarkable. I highly recommend his consulting services.",
     author: "Michael Chen",
     title: "Director of Analytics, Innovate Corp",
-    avatar:
-      "/placeholder.svg?height=80&width=80&query=professional man portrait",
+    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
     id: 3,
@@ -31,8 +29,7 @@ const testimonials = [
       "Jeff's book on Data Leadership has become essential reading for our entire management team. His frameworks for building data-driven organizations are practical, insightful, and immediately applicable.",
     author: "Priya Patel",
     title: "CEO, DataFirst Enterprises",
-    avatar:
-      "/placeholder.svg?height=80&width=80&query=professional woman portrait",
+    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
   },
 ];
 
@@ -67,7 +64,7 @@ export default function Testimonials() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative h-[300px] md:h-[250px] overflow-hidden">
+      <div className="relative h-[350px] md:h-[300px] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={testimonials[current].id}
@@ -79,7 +76,7 @@ export default function Testimonials() {
           >
             <div className="flex flex-col items-center text-center p-6">
               <Quote className="h-12 w-12 text-primary/20 mb-6" />
-              <p className="text-lg md:text-xl italic mb-8">
+              <p className="text-xl md:text-base italic mb-8">
                 "{testimonials[current].content}"
               </p>
               <div className="flex items-center gap-4">
@@ -104,10 +101,10 @@ export default function Testimonials() {
         </AnimatePresence>
       </div>
 
-      <div className="flex justify-center gap-2 mt-6">
+      <div className="flex justify-center gap-4 my-6">
         <Button
           variant="outline"
-          size="icon"
+          size="sm"
           onClick={prev}
           aria-label="Previous testimonial"
         >
@@ -119,8 +116,8 @@ export default function Testimonials() {
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              className={`h-2 w-2 rounded-full transition-all ${
-                index === current ? "bg-primary w-4" : "bg-muted"
+              className={`h-2 w-2 rounded-full transition-all !border-blue-500 ${
+                index === current ? "bg-white  w-4" : "bg-white/20"
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
@@ -129,7 +126,7 @@ export default function Testimonials() {
 
         <Button
           variant="outline"
-          size="icon"
+          size="sm"
           onClick={next}
           aria-label="Next testimonial"
         >

@@ -22,7 +22,7 @@ export default function Home() {
       </section>
 
       <section id="testimonials" className="bg-muted py-16">
-        <div className="container">
+        <div className="container md:mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               What People Say
@@ -47,15 +47,15 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-0 group-hover:opacity-10 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative flex items-center gap-6 bg-card p-6 rounded-lg border">
-              <div className="w-24 h-36 relative flex-shrink-0">
+              <div className="w-28 h-36 relative flex-shrink-0">
                 <Image
                   src="/data-visualization-book-cover.png"
                   alt="Book cover"
-                  width={96}
+                  width={122}
                   height={144}
-                  className="object-cover rounded-md"
+                  className="object-cover h-full rounded-md"
                 />
               </div>
               <div className="flex flex-col">
@@ -77,13 +77,13 @@ export default function Home() {
           <div className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-0 group-hover:opacity-10 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative flex items-center gap-6 bg-card p-6 rounded-lg border">
-              <div className="w-24 h-36 relative flex-shrink-0">
+              <div className="w-28 !h-36 relative flex-shrink-0">
                 <Image
-                  src="/placeholder.svg?height=144&width=96&query=book cover with leadership theme"
+                  src="/leadership-book-cover.png"
                   alt="Book cover"
-                  width={96}
+                  width={122}
                   height={144}
-                  className="object-cover rounded-md"
+                  className="object-cover h-full rounded-md"
                 />
               </div>
               <div className="flex flex-col">
