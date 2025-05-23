@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
-import { Menu, X, Database } from "lucide-react";
+import { Menu, X, Database, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Navbar() {
@@ -40,12 +40,10 @@ export default function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-200",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b"
-          : "bg-background"
+        isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-background"
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container mx-auto flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
             <Database className="h-6 w-6 text-primary" />
@@ -73,7 +71,10 @@ export default function Navbar() {
           ))}
 
           <Button asChild>
-            <Link href="#contact">Contact Me</Link>
+            <Link className="flex items-center gap-2" href="#contact">
+              <span className="-mt-0.5">Contact Me</span>
+              <Mail />
+            </Link>
           </Button>
 
           <ModeToggle />

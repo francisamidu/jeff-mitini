@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden py-20 md:py-32 lg:py-40">
-      <div className="container relative z-10">
+      <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -21,8 +21,8 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-              <span className="block">Transforming Data</span>
-              <span className="block text-foreground">Into Insights</span>
+              <span className="block">Turning Complex Data</span>
+              <span className="block text-secondary">Into Business Impact</span>
             </h1>
           </motion.div>
 
@@ -32,8 +32,7 @@ export default function Hero() {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
           >
-            Business Intelligence Specialist, Data Analyst Team Lead, Author,
-            and Principal of a Leadership & IT Institute.
+            BI Developer • Data Visualization Expert • AWS Certified Analyst
           </motion.p>
 
           <motion.div
@@ -55,10 +54,91 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Background Elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
+      {/* Analysis-Inspired Background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1440 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute inset-0 w-full h-full"
+        >
+          {/* Dotted grid */}
+          <defs>
+            <pattern
+              id="dots"
+              x="0"
+              y="0"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <circle cx="2" cy="2" r="2" fill="#60A5FA" fillOpacity="0.08" />
+            </pattern>
+          </defs>
+          <rect width="1440" height="600" fill="url(#dots)" />
+
+          {/* Abstract line graph */}
+          <polyline
+            className="analysis-polyline polyline-1"
+            points="0,500 200,400 400,420 600,320 800,350 1000,200 1200,300 1440,180"
+            stroke="#60A5FA"
+            strokeWidth="2"
+            fill="none"
+            opacity="0.16"
+          />
+          <polyline
+            className="analysis-polyline polyline-2"
+            points="0,550 180,420 360,500 540,380 720,330 900,400 1080,250 1260,320 1440,210"
+            stroke="#F472B6"
+            strokeWidth="2"
+            fill="none"
+            opacity="0.11"
+          />
+
+          {/* Data points */}
+          <circle
+            className="analysis-point point-1"
+            cx="200"
+            cy="400"
+            r="6"
+            fill="#60A5FA"
+            opacity="0.12"
+          />
+          <circle
+            className="analysis-point point-2"
+            cx="600"
+            cy="320"
+            r="6"
+            fill="#60A5FA"
+            opacity="0.12"
+          />
+          <circle
+            className="analysis-point point-3"
+            cx="1000"
+            cy="200"
+            r="6"
+            fill="#60A5FA"
+            opacity="0.12"
+          />
+          <circle
+            className="analysis-point point-4"
+            cx="400"
+            cy="420"
+            r="4"
+            fill="#F472B6"
+            opacity="0.13"
+          />
+          <circle
+            className="analysis-point point-5"
+            cx="900"
+            cy="400"
+            r="4"
+            fill="#F472B6"
+            opacity="0.13"
+          />
+        </svg>
       </div>
     </section>
   );
