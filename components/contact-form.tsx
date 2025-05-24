@@ -17,6 +17,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { CheckCircle2, SendIcon } from "lucide-react";
 import Image from "next/image";
+import emailJs from "@emailjs/browser";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,23 +64,50 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, requestType: value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      console.log(formData);
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+    try {
+      const res = await emailJs.send(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          request_type: formData.requestType,
+          message: formData.message,
+        },
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+        }
+      );
+      if (res.status === 200) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        toast({
+          title: "Request Submitted",
+          description: "Thank you for your request. I'll get back to you soon.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          requestType: "",
+          message: "",
+        });
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
       toast({
-        title: "Request Submitted",
-        description: "Thank you for your request. I'll get back to you soon.",
+        title: "Error",
+        description: "An error occurred while sending your request.",
+        variant: "destructive",
       });
-    }, 1500);
+    }
   };
 
   if (isSubmitted) {
