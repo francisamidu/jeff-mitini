@@ -222,7 +222,11 @@ export default function ContactForm() {
             )}
           </div>
 
-          <Button type="submit" className="w-fit" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            className="w-fit dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? (
               "Submitting..."
             ) : (
