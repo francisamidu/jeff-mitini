@@ -1,3 +1,4 @@
+import PortfolioPage from "@/components/portfolio";
 import Image from "next/image";
 
 export default function AboutPage() {
@@ -93,6 +94,7 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+      <PortfolioPage />
     </div>
   );
 }
