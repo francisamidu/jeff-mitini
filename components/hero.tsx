@@ -20,7 +20,7 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="font-extrabold tracking-tight text-4xl md:text-6xl lg:text-7xl">
               <span className="block">Turning Complex Data</span>
               <span className="block text-secondary">Into Business Impact</span>
             </h1>
@@ -41,7 +41,10 @@ export default function Hero() {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center sm:px-4 gap-4 justify-center"
           >
-            <Button className="w-fit" asChild>
+            <Button
+              className="w-fit dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+              asChild
+            >
               <Link href="#request">
                 Work with Me
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition" />
