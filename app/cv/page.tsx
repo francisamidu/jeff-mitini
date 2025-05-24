@@ -1,3 +1,4 @@
+import Technologies from "@/components/technologies";
 import { Button } from "@/components/ui/button";
 import {
   Download,
@@ -590,6 +591,7 @@ export default function CVPage() {
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">Technologies & Tools</h2>
               </div>
+              <Technologies />
             </div>
           </div>
         </div>

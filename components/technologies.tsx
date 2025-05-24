@@ -1,15 +1,20 @@
 import Image from "next/image";
 
-export default function Technologie() {
+export default function TechnologiesPage() {
   return (
-    <div className="bg-[#F8F7FF] min-h-screen py-16">
-      <div className="container max-w-6xl mx-auto px-4">
+    <div className="min-h-screen py-16">
+      <div className="px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* SQL */}
           <div>
             <div className="flex flex-col mb-4">
-              <div className="bg-black h-16 w-16 flex justify-center mb-4">
-                <span className="text-white text-2xl font-bold">SQL</span>
+              <div className="h-16 w-16 flex items-center justify-center mb-4">
+                <Image
+                  src="/sql-logo.svg"
+                  alt="Tableau"
+                  width={40}
+                  height={40}
+                />
               </div>
               <h3 className="text-xl">SQL</h3>
             </div>
@@ -22,12 +27,12 @@ export default function Technologie() {
           {/* Tableau */}
           <div>
             <div className="flex flex-col mb-4">
-              <div className="bg-white h-16 w-16 flex justify-center mb-4">
+              <div className="h-16 w-16 flex items-center justify-center mb-4">
                 <Image
-                  src="/placeholder.svg?height=40&width=40&query=tableau logo"
+                  src="/tableau-logo.png"
                   alt="Tableau"
-                  width={40}
-                  height={40}
+                  width={400}
+                  height={200}
                 />
               </div>
               <h3 className="text-xl">Tableau</h3>
@@ -41,8 +46,13 @@ export default function Technologie() {
           {/* Power BI */}
           <div>
             <div className="flex flex-col mb-4">
-              <div className="bg-black h-16 w-16 rounded-full flex justify-center mb-4">
-                <span className="text-white text-2xl font-bold">BI</span>
+              <div className="h-16 w-16 flex items-center justify-center mb-4">
+                <Image
+                  src="/powerbi-logo.png"
+                  alt="Tableau"
+                  width={40}
+                  height={40}
+                />
               </div>
               <h3 className="text-xl">Power BI</h3>
             </div>
@@ -55,8 +65,13 @@ export default function Technologie() {
           {/* Python */}
           <div>
             <div className="flex flex-col mb-4">
-              <div className="bg-black h-16 w-16 flex justify-center mb-4">
-                <span className="text-white text-2xl font-bold">PY</span>
+              <div className="h-16 w-16 flex items-center justify-center mb-4">
+                <Image
+                  src="/python-logo.png"
+                  alt="Tableau"
+                  width={40}
+                  height={40}
+                />
               </div>
               <h3 className="text-xl">Python</h3>
             </div>
@@ -69,13 +84,8 @@ export default function Technologie() {
           {/* AWS */}
           <div>
             <div className="flex flex-col mb-4">
-              <div className="h-16 w-16 flex justify-center mb-4">
-                <Image
-                  src="/placeholder.svg?height=40&width=40&query=aws logo"
-                  alt="AWS"
-                  width={40}
-                  height={40}
-                />
+              <div className="h-16 w-16 flex items-center justify-center mb-4">
+                <Image src="/aws-logo-1.svg" alt="AWS" width={40} height={40} />
               </div>
               <h3 className="text-xl">AWS</h3>
             </div>
@@ -88,9 +98,9 @@ export default function Technologie() {
           {/* Excel */}
           <div>
             <div className="flex flex-col mb-4">
-              <div className="h-16 w-16 flex justify-center mb-4">
+              <div className="h-16 w-16 flex items-center justify-center mb-4">
                 <Image
-                  src="/placeholder.svg?height=40&width=40&query=excel logo"
+                  src="/excel-logo.png"
                   alt="Excel"
                   width={40}
                   height={40}
@@ -107,9 +117,9 @@ export default function Technologie() {
           {/* IBM Cognos */}
           <div>
             <div className="flex flex-col mb-4">
-              <div className="h-16 w-16 flex justify-center mb-4">
+              <div className="h-16 w-16 flex items-center justify-center mb-4">
                 <Image
-                  src="/placeholder.svg?height=40&width=40&query=ibm cognos logo"
+                  src="/cognos-logo.png"
                   alt="IBM Cognos"
                   width={40}
                   height={40}
@@ -126,12 +136,12 @@ export default function Technologie() {
           {/* Agile/SCRUM */}
           <div>
             <div className="flex flex-col mb-4">
-              <div className="h-16 w-16 flex justify-center mb-4">
+              <div className="h-16 w-16 flex items-center justify-center mb-4">
                 <Image
-                  src="/placeholder.svg?height=40&width=40&query=agile scrum logo"
+                  src="/agile-logo.png"
                   alt="Agile/SCRUM"
-                  width={40}
-                  height={40}
+                  width={400}
+                  height={400}
                 />
               </div>
               <h3 className="text-xl">Agile/SCRUM</h3>
