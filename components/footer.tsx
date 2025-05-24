@@ -18,7 +18,7 @@ export default function Footer() {
             <Linkedin />
           </Link>
           <Link
-            href="https://twitter.com/jeffmitini"
+            href="https://x.com/cjmitini"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"
