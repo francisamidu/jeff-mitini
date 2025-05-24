@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, UserPlus, Briefcase, Users } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -46,12 +47,17 @@ function ServiceCard({
       </h2>
       <p className="mb-8 text-center text-slate-600">{description}</p>
       <div className="mt-auto">
-        <Button className="bg-slate-800 hover:bg-slate-900 text-white group-hover:translate-y-[-2px] transition-transform duration-300 flex items-center gap-2">
-          {buttonText}
-          <ArrowRight
-            size={16}
-            className="group-hover:translate-x-1 transition-transform duration-300"
-          />
+        <Button
+          className="bg-slate-800 hover:bg-slate-900 text-white group-hover:translate-y-[-2px] transition-transform duration-300 flex items-center gap-2"
+          asChild
+        >
+          <Link href="#contact">
+            {buttonText}
+            <ArrowRight
+              size={16}
+              className="group-hover:translate-x-1 transition-transform duration-300"
+            />
+          </Link>
         </Button>
       </div>
     </div>
