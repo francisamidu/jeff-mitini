@@ -130,7 +130,10 @@ export default function Navbar() {
           ))}
 
           <Button asChild>
-            <Link className="flex items-center gap-2" href="#contact">
+            <Link
+              className="flex items-center gap-2 dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+              href="#contact"
+            >
               <span className="-mt-0.5">Contact Me</span>
               <Mail />
             </Link>
@@ -208,8 +211,13 @@ export default function Navbar() {
                   </Link>
                 ))}
 
-                <Button asChild className="mt-2">
-                  <Link href="#contact">Contact Me</Link>
+                <Button asChild className="mt-2 ">
+                  <Link
+                    href="#contact"
+                    className="dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+                  >
+                    Contact Me
+                  </Link>
                 </Button>
               </div>
             </motion.div>
