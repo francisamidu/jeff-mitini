@@ -47,28 +47,28 @@ const experiences = [
     ],
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary" />,
+    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "Principal",
     subtitle: "St. John Paul II Catholic College • Full-time",
     period: "January 2015 - December 2020 • 6 yrs",
     location: "Blantyre, Malawi",
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary" />,
+    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "Head of Training",
     subtitle: "St. John Paul II Catholic College • Full-time",
     period: "January 2013 - December 2014 • 2 yrs",
     location: "Blantyre, Southern Region, Malawi",
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary" />,
+    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "Instructor",
     subtitle: "St. John Paul II Catholic College • Full-time",
     period: "October 2011 - December 2012 • 1 yr 3 mos",
     location: "Blantyre, Southern Region, Malawi",
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary" />,
+    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "Instructor",
     subtitle: "New Horizons Computer Learning Centre Malawi • Full-time",
     period: "December 2004 - August 2007 • 2 yrs 9 mos",
@@ -79,19 +79,25 @@ const experiences = [
 // Education Data
 const education = [
   {
-    icon: <GraduationCap className="h-6 w-6 text-secondary" />,
+    icon: (
+      <GraduationCap className="h-6 w-6 text-secondary dark:text-white/50" />
+    ),
     title: "Park University",
     subtitle: "Master of Science Information Systems and Business Analytics",
     period: "January 2021 - April 2023",
   },
   {
-    icon: <GraduationCap className="h-6 w-6 text-secondary" />,
+    icon: (
+      <GraduationCap className="h-6 w-6 text-secondary dark:text-white/50" />
+    ),
     title: "Africa University",
     subtitle: "Bachelor of Science (BSc), Computer Information Systems",
     period: "2007 - 2011",
   },
   {
-    icon: <GraduationCap className="h-6 w-6 text-secondary" />,
+    icon: (
+      <GraduationCap className="h-6 w-6 text-secondary dark:text-white/50" />
+    ),
     title: "New Horizons Computer Learning Centre",
     subtitle: "Advanced Diploma, Computer Engineering",
     period: "2007",
@@ -101,32 +107,32 @@ const education = [
 // Certifications Data
 const certifications = [
   {
-    icon: <Award className="h-6 w-6 text-secondary" />,
+    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "Google Analytics for Beginners",
     subtitle: "Google",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary" />,
+    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "Extract, Transform, and Load Data",
     subtitle: "IBM",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary" />,
+    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "Tableau Desktop Specialist",
     subtitle: "Tableau",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary" />,
+    icon: <Award className="h-6 w-6 text-secondar dark:text-white/50y" />,
     title: "Advanced Google Analytics",
     subtitle: "Google",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary" />,
+    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "AWS Cloud Practitioner",
     subtitle: "Amazon Web Services",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary" />,
+    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
     title: "IBM Data Analytics",
     subtitle: "IBM",
   },
@@ -190,7 +196,7 @@ export default function CVPage() {
               </div>
 
               <div className="flex gap-2 mb-4">
-                <Button className="flex items-center gap-2">
+                <Button className="flex items-center gap-2 dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black">
                   <Download className="h-4 w-4" />
                   <span className="hidden md:inline">Download CV</span>
                 </Button>
@@ -217,7 +223,7 @@ export default function CVPage() {
                     <span>•</span>
                     <Link
                       href="#contact"
-                      className="text-secondary hover:text-secondary hover:underline"
+                      className="text-secondary dark:underline dark:text-white/50 hover:text-secondary hover:underline"
                     >
                       Contact Me
                     </Link>
@@ -232,7 +238,7 @@ export default function CVPage() {
 
                     <Link
                       href="#park-uni"
-                      className="text-sm hover:text-secondary"
+                      className="text-sm hover:text-secondary dark:underline dark:text-white/50 hover:dark:text-white"
                     >
                       Park University
                     </Link>
@@ -245,7 +251,7 @@ export default function CVPage() {
                     </div>
                     <Link
                       href="#kw-int"
-                      className="text-sm hover:text-secondary"
+                      className="text-sm hover:text-secondary dark:underline dark:text-white/50 hover:dark:text-white"
                     >
                       KW International
                     </Link>
@@ -268,7 +274,7 @@ export default function CVPage() {
                     href="https://www.linkedin.com/in/jeffmitini"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-secondary hover:underline"
+                    className="text-secondary dark:underline dark:text-white/50 hover:text-secondary hover:underline"
                   >
                     www.linkedin.com/in/jeffmitini
                   </a>
