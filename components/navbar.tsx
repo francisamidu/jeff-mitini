@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -14,6 +14,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const firstLinkRef = React.useRef<HTMLAnchorElement>(null);
+  const lastFocusableRef = React.useRef<HTMLButtonElement>(null);
 
   // Handle scroll event to change navbar appearance
   useEffect(() => {
@@ -29,6 +32,52 @@ export default function Navbar() {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  // Focus trap, scroll lock, and Escape key for mobile menu
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Lock scroll
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Focus the first link
+    firstLinkRef.current?.focus();
+
+    // Keydown handler for focus trap and Escape
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+      // Focus trap
+      if (e.key === "Tab" && menuRef.current) {
+        const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusableEls[0];
+        const last = focusableEls[focusableEls.length - 1];
+        if (e.shiftKey) {
+          // Shift+Tab
+          if (document.activeElement === first) {
+            e.preventDefault();
+            (last as HTMLElement).focus();
+          }
+        } else {
+          // Tab
+          if (document.activeElement === last) {
+            e.preventDefault();
+            (first as HTMLElement).focus();
+          }
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -100,42 +149,71 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? (
+              <X className="h-6 w-6 -top-3" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </Button>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation Menu (Overlay) */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden border-b"
-          >
-            <div className="container py-4 flex flex-col gap-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary py-2",
-                    pathname === item.href
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
+          <>
+            {/* Overlay background */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/50 md:hidden"
+              aria-hidden="true"
+              onClick={() => setIsOpen(false)}
+            />
+            {/* Menu panel */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="fixed -top-16 left-0 right-0 z-50 md:hidden border-b bg-background shadow-lg"
+              style={{ marginTop: 64 }} // 64px = h-16 navbar height
+              ref={menuRef}
+              role="dialog"
+              aria-modal="true"
+            >
+              <button
+                onClick={() => setIsOpen(false)}
+                aria-label="Close menu"
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary z-10"
+                tabIndex={0}
+              >
+                <X className="h-6 w-6" />
+              </button>
+              <div className="container p-4 flex flex-col gap-1">
+                {navItems.map((item, idx) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:text-primary py-2",
+                      pathname === item.href
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
 
-              <Button asChild className="mt-2">
-                <Link href="#contact">Contact Me</Link>
-              </Button>
-            </div>
-          </motion.div>
+                <Button asChild className="mt-2">
+                  <Link href="#contact">Contact Me</Link>
+                </Button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
