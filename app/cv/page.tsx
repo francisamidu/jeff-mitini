@@ -18,7 +18,7 @@ import InfoCard from "@/components/InfoCard";
 // Experience Data
 const experiences = [
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary" />,
+    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white" />,
     title: "Team Lead | Data Analyst",
     subtitle: "KW International • Full-time",
     period: "July 2023 - Present • 1 yr 11 mos",
@@ -33,7 +33,7 @@ const experiences = [
     id: "kw-int",
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary" />,
+    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white" />,
     title: "Business Intelligence Developer",
     subtitle: "ChannelMix • Full-time",
     period: "May 2022 - August 2022 • 4 mos",
@@ -47,28 +47,36 @@ const experiences = [
     ],
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Briefcase className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "Principal",
     subtitle: "St. John Paul II Catholic College • Full-time",
     period: "January 2015 - December 2020 • 6 yrs",
     location: "Blantyre, Malawi",
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Briefcase className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "Head of Training",
     subtitle: "St. John Paul II Catholic College • Full-time",
     period: "January 2013 - December 2014 • 2 yrs",
     location: "Blantyre, Southern Region, Malawi",
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Briefcase className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "Instructor",
     subtitle: "St. John Paul II Catholic College • Full-time",
     period: "October 2011 - December 2012 • 1 yr 3 mos",
     location: "Blantyre, Southern Region, Malawi",
   },
   {
-    icon: <Briefcase className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Briefcase className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "Instructor",
     subtitle: "New Horizons Computer Learning Centre Malawi • Full-time",
     period: "December 2004 - August 2007 • 2 yrs 9 mos",
@@ -80,7 +88,7 @@ const experiences = [
 const education = [
   {
     icon: (
-      <GraduationCap className="h-6 w-6 text-secondary dark:text-white/50" />
+      <GraduationCap className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
     ),
     title: "Park University",
     subtitle: "Master of Science Information Systems and Business Analytics",
@@ -88,7 +96,7 @@ const education = [
   },
   {
     icon: (
-      <GraduationCap className="h-6 w-6 text-secondary dark:text-white/50" />
+      <GraduationCap className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
     ),
     title: "Africa University",
     subtitle: "Bachelor of Science (BSc), Computer Information Systems",
@@ -96,7 +104,7 @@ const education = [
   },
   {
     icon: (
-      <GraduationCap className="h-6 w-6 text-secondary dark:text-white/50" />
+      <GraduationCap className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
     ),
     title: "New Horizons Computer Learning Centre",
     subtitle: "Advanced Diploma, Computer Engineering",
@@ -107,17 +115,23 @@ const education = [
 // Certifications Data
 const certifications = [
   {
-    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Award className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "Google Analytics for Beginners",
     subtitle: "Google",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Award className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "Extract, Transform, and Load Data",
     subtitle: "IBM",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Award className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "Tableau Desktop Specialist",
     subtitle: "Tableau",
   },
@@ -127,12 +141,16 @@ const certifications = [
     subtitle: "Google",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Award className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "AWS Cloud Practitioner",
     subtitle: "Amazon Web Services",
   },
   {
-    icon: <Award className="h-6 w-6 text-secondary dark:text-white/50" />,
+    icon: (
+      <Award className="h-6 w-6 text-secondary dark:text-white dark:bg-gray-900/50 dark:border-gray-900" />
+    ),
     title: "IBM Data Analytics",
     subtitle: "IBM",
   },
@@ -369,7 +387,7 @@ export default function CVPage() {
                     {topSkills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="bg-secondary text-white border border-secondary/90 px-3 py-1 rounded-full text-sm flex items-center gap-1"
+                        className="bg-card/50 text-white border px-3 py-1 rounded-full text-sm flex items-center gap-1"
                       >
                         <span>{skill.name}</span>
                         <span className="bg-primary/20 px-1.5 rounded-full text-xs">
@@ -382,8 +400,8 @@ export default function CVPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
-                      <div className="h-12 w-12 bg-secondary/10 rounded flex items-center justify-center">
-                        <Code className="h-6 w-6 text-secondary" />
+                      <div className="h-12 w-12 bg-secondary/10 dark:border-gray-900 dark:border rounded flex items-center justify-center">
+                        <Code className="h-6 w-6 text-secondary dark:text-white" />
                       </div>
                     </div>
                     <div>
@@ -392,7 +410,7 @@ export default function CVPage() {
                         {technicalSkills.map((skill) => (
                           <span
                             key={skill}
-                            className="bg-secondary text-white border border-secondary/90 px-3 py-1 rounded-full text-sm"
+                            className="bg-secondary dark:bg-slate-900/70 text-white border border-slate-900/70 px-3 py-1 rounded-full text-sm"
                           >
                             {skill}
                           </span>
@@ -412,7 +430,7 @@ export default function CVPage() {
                         {businessSkills.map((skill) => (
                           <span
                             key={skill}
-                            className="bg-secondary text-white border border-secondary/90 px-3 py-1 rounded-full text-sm"
+                            className="bg-secondary dark:bg-slate-900/70 text-white border border-slate-900/70 px-3 py-1 rounded-full text-sm"
                           >
                             {skill}
                           </span>

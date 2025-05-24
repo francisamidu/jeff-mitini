@@ -17,7 +17,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
 }) => (
   <div className={`flex gap-4 ${className}`}>
     <div className="flex-shrink-0">
-      <div className="h-12 w-12  dark:bg-white/50 !dark:text-white rounded flex items-center justify-center">
+      <div className="h-12 w-12 dark:border-gray-900 dark:border !dark:text-white rounded flex items-center justify-center">
         {icon}
       </div>
     </div>
