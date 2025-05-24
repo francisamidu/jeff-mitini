@@ -18,7 +18,7 @@ export default function BooksPage() {
       <div className="space-y-16">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-10 dark:opacity-0 dark:hover:group-opacity-10 hover:opacity-20 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative">
               <Image
                 src="/data-visualization-book-cover.png"
@@ -82,7 +82,7 @@ export default function BooksPage() {
             </p>
 
             <div className="pt-4">
-              <Button className="flex items-center gap-2">
+              <Button className="flex items-center gap-2 dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black">
                 Purchase on Amazon
                 <ExternalLink className="h-4 w-4" />
               </Button>
@@ -92,7 +92,7 @@ export default function BooksPage() {
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="relative group md:order-last">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-10 dark:opacity-0 dark:hover:group-opacity-10 group-hover:opacity-20 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative">
               <Image
                 src="/leadership-book-cover.png"
@@ -156,7 +156,7 @@ export default function BooksPage() {
             </p>
 
             <div className="pt-4">
-              <Button className="flex items-center gap-2">
+              <Button className="flex items-center gap-2 dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black">
                 Purchase on Amazon
                 <ExternalLink className="h-4 w-4" />
               </Button>
