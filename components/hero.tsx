@@ -39,15 +39,15 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            className="mt-10 flex flex-col sm:flex-row items-center sm:px-4 gap-4 justify-center"
           >
-            <Button size="lg" asChild>
+            <Button className="w-fit" asChild>
               <Link href="#request">
                 Work with Me
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button className="w-fit" variant="outline" asChild>
               <Link href="/books">Explore My Books</Link>
             </Button>
           </motion.div>
