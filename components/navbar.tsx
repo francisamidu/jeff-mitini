@@ -40,7 +40,7 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-200",
+        "sticky top-0 z-50 px-2 md:px-0 w-full transition-all duration-200",
         isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-background"
       )}
     >
@@ -94,6 +94,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4 md:hidden">
           <ModeToggle />
           <Button
+            className="hover:!bg-gray-50"
             variant="ghost"
             size="icon"
             onClick={() => setIsOpen(!isOpen)}

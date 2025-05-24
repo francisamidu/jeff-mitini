@@ -128,8 +128,8 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="container mb-16">
-      <div className="mx-auto max-w-4xl">
+    <section id="contact" className="container mb-16 px-3 md:px-0">
+      <div className="mx-auto md:max-w-4xl">
         <div className="text-center mb-8 flex flex-col items-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Get in Touch
