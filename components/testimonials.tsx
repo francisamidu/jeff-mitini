@@ -87,7 +87,9 @@ export default function Testimonials() {
                 <div className="flex flex-col items-center text-center p-6">
                   <Quote className="h-12 w-12 text-primary/20 mb-6" />
                   <p className="text-xl md:text-base italic mb-8">
-                    "{testimonials[current].content}"
+                    {`"`}
+                    {testimonials[current].content}
+                    {`"`}
                   </p>
                   <div className="flex items-center gap-4">
                     <Image

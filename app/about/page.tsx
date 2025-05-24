@@ -12,7 +12,7 @@ export default function AboutPage() {
         <div className="md:col-span-3 space-y-6 about-section">
           <h2 className="text-2xl text-white font-bold">Profile</h2>
           <p className="leading-relaxed dark:text-muted-foreground">
-            I'm Jeff Mitini Nkhoma, a Business Intelligence Specialist, Data
+            I{`'`}m Jeff Mitini Nkhoma, a Business Intelligence Specialist, Data
             Analyst Team Lead with over 4 years of experience transforming data
             into actionable insights.
           </p>
@@ -42,10 +42,10 @@ export default function AboutPage() {
 
           <h2 className="text-2xl text-white font-bold mt-8">My Mission</h2>
           <p className="leading-relaxed dark:text-muted-foreground">
-            I'm dedicated to helping organizations build data-driven cultures
-            where insights lead to innovation. Whether through consulting,
-            leadership, or education, my goal is to empower people to make
-            better decisions through data.
+            I{`'`}m dedicated to helping organizations build data-driven
+            cultures where insights lead to innovation. Whether through
+            consulting, leadership, or education, my goal is to empower people
+            to make better decisions through data.
           </p>
         </div>
 

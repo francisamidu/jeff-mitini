@@ -118,7 +118,8 @@ export default function ContactForm() {
         </div>
         <h3 className="mt-4 text-xl font-semibold">Request Submitted</h3>
         <p className="mt-2 text-muted-foreground">
-          Thank you for your request. I'll get back to you as soon as possible.
+          Thank you for your request. I{`'`}ll get back to you as soon as
+          possible.
         </p>
         <Button className="mt-6" onClick={() => setIsSubmitted(false)}>
           Submit Another Request

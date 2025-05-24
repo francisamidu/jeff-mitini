@@ -19,12 +19,12 @@ export default function AboutSnippet() {
         <div className="space-y-4">
           <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
           <p className="text-muted-foreground ">
-            <span className="block my-4">👋 Hey, I'm Jeff</span>
+            <span className="block my-4">👋 Hey, I{`'`}m Jeff</span>
             <span>
-              I'm here to help you design, develop, and deploy BI solutions to
-              drive business impact. I spend my days leveraging data analysis,
-              data visualization, and statistical techniques to deliver
-              strategic insights.
+              I{`'`}m here to help you design, develop, and deploy BI solutions
+              to drive business impact. I spend my days leveraging data
+              analysis, data visualization, and statistical techniques to
+              deliver strategic insights.
             </span>
           </p>
 

@@ -2,9 +2,6 @@ import Technologies from "@/components/technologies";
 import { Button } from "@/components/ui/button";
 import {
   Download,
-  MessageSquare,
-  Plus,
-  Bell,
   Briefcase,
   GraduationCap,
   Award,

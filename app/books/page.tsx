@@ -11,7 +11,7 @@ export default function BooksPage() {
 
       <p className="text-xl leading-relaxed max-w-3xl mb-12">
         Drawing from my experience in business intelligence, data analytics, and
-        leadership, I've authored books to help professionals navigate the
+        leadership, I{`'`}ve authored books to help professionals navigate the
         complex intersection of technology and business strategy.
       </p>
 
@@ -67,10 +67,10 @@ export default function BooksPage() {
             </div>
 
             <p className="leading-relaxed">
-              In "Data Leadership," I provide a comprehensive framework for
-              executives and managers to transform their organizations through
-              data-driven decision making. The book covers everything from
-              building analytics teams to implementing data governance and
+              In {`"`}Data Leadership{`"`}, I provide a comprehensive framework
+              for executives and managers to transform their organizations
+              through data-driven decision making. The book covers everything
+              from building analytics teams to implementing data governance and
               creating a culture of data literacy.
             </p>
 
@@ -142,11 +142,11 @@ export default function BooksPage() {
             </div>
 
             <p className="leading-relaxed">
-              "IT Leadership Principles" provides a framework for technology
-              leaders to align IT initiatives with business objectives. The book
-              explores how to develop a strategic vision, build high-performing
-              teams, and communicate effectively with stakeholders at all levels
-              of the organization.
+              {`"`}IT Leadership Principles{`"`} provides a framework for
+              technology leaders to align IT initiatives with business
+              objectives. The book explores how to develop a strategic vision,
+              build high-performing teams, and communicate effectively with
+              stakeholders at all levels of the organization.
             </p>
 
             <p className="leading-relaxed">

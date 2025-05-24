@@ -16,7 +16,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const menuRef = React.useRef<HTMLDivElement>(null);
   const firstLinkRef = React.useRef<HTMLAnchorElement>(null);
-  const lastFocusableRef = React.useRef<HTMLButtonElement>(null);
 
   // Handle scroll event to change navbar appearance
   useEffect(() => {
@@ -196,7 +195,7 @@ export default function Navbar() {
                 <X className="h-6 w-6" />
               </button>
               <div className="container p-4 flex flex-col gap-1">
-                {navItems.map((item, idx) => (
+                {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}

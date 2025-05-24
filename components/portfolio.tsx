@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Eye, Heart, Github } from "lucide-react";
+import { Eye, Heart } from "lucide-react";
 import { v4 as uuid } from "uuid";
 
 const tableauProjects = [
@@ -184,7 +184,7 @@ export default function PortfolioPage() {
                 Power BI Projects Coming Soon
               </h3>
               <p className="text-muted-foreground mb-6">
-                I'm currently working on adding my Power BI projects to this
+                I{`'`}m currently working on adding my Power BI projects to this
                 portfolio. Check back soon!
               </p>
               <Button
@@ -203,7 +203,7 @@ export default function PortfolioPage() {
                 Python Data Projects Coming Soon
               </h3>
               <p className="text-muted-foreground mb-6">
-                I'm currently organizing my Python data analysis and
+                I{`'`}m currently organizing my Python data analysis and
                 visualization projects. Check back soon!
               </p>
               <Button
@@ -223,8 +223,8 @@ export default function PortfolioPage() {
           </h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             I can help you transform your data into meaningful insights through
-            custom dashboards and visualizations. Let's discuss how I can help
-            your organization make data-driven decisions.
+            custom dashboards and visualizations. Let{`'`}s discuss how I can
+            help your organization make data-driven decisions.
           </p>
           <Button
             asChild
