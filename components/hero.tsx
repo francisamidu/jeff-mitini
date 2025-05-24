@@ -44,7 +44,7 @@ export default function Hero() {
             <Button size="lg" asChild>
               <Link href="#request">
                 Work with Me
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>

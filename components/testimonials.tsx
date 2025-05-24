@@ -59,80 +59,92 @@ export default function Testimonials() {
     );
 
   return (
-    <div
-      className="relative max-w-4xl mx-auto"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="relative h-[350px] md:h-[300px] overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={testimonials[current].id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0"
-          >
-            <div className="flex flex-col items-center text-center p-6">
-              <Quote className="h-12 w-12 text-primary/20 mb-6" />
-              <p className="text-xl md:text-base italic mb-8">
-                "{testimonials[current].content}"
-              </p>
-              <div className="flex items-center gap-4">
-                <Image
-                  src={testimonials[current].avatar || "/placeholder.svg"}
-                  alt={testimonials[current].author}
-                  width={50}
-                  height={50}
-                  className="rounded-full"
-                />
-                <div className="text-left">
-                  <p className="font-semibold">
-                    {testimonials[current].author}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonials[current].title}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      <div className="flex justify-center gap-4 my-6">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={prev}
-          aria-label="Previous testimonial"
-        >
-          <ChevronLeft className="h-4 w-4" />
-        </Button>
-
-        <div className="flex gap-2 items-center">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrent(index)}
-              className={`h-2 w-2 rounded-full transition-all !border-blue-500 ${
-                index === current ? "bg-white  w-4" : "bg-white/20"
-              }`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
+    <section id="testimonials" className="bg-muted py-16">
+      <div className="container md:mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            What People Say
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Feedback from clients and collaborators
+          </p>
         </div>
-
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={next}
-          aria-label="Next testimonial"
+        <div
+          className="relative max-w-4xl mx-auto"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          <ChevronRight className="h-4 w-4" />
-        </Button>
+          <div className="relative h-[350px] md:h-[300px] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={testimonials[current].id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
+              >
+                <div className="flex flex-col items-center text-center p-6">
+                  <Quote className="h-12 w-12 text-primary/20 mb-6" />
+                  <p className="text-xl md:text-base italic mb-8">
+                    "{testimonials[current].content}"
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <Image
+                      src={testimonials[current].avatar || "/placeholder.svg"}
+                      alt={testimonials[current].author}
+                      width={50}
+                      height={50}
+                      className="rounded-full"
+                    />
+                    <div className="text-left">
+                      <p className="font-semibold">
+                        {testimonials[current].author}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {testimonials[current].title}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="flex justify-center gap-4 my-6">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={prev}
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+
+            <div className="flex gap-2 items-center">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrent(index)}
+                  className={`h-2 w-2 rounded-full transition-all !border-blue-500 ${
+                    index === current ? "bg-white  w-4" : "bg-white/20"
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={next}
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -122,6 +122,12 @@
   button:hover{
     cursor: pointer;
   }
+  html{
+    scroll-behavior: smooth;
+  }
+  .about-section p{
+    color: var(--text-muted-foreground) !important;
+  }
 }
 
 /* === Hero SVG Animation Styles === */

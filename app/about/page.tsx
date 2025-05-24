@@ -1,63 +1,59 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="container py-12 md:py-16">
-      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-8">About Me</h1>
+    <div className="md:max-w-screen-lg md:mx-auto py-12 md:py-16 flex flex-col items-center">
+      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-8">
+        About Me
+      </h1>
 
-      <div className="grid md:grid-cols-5 gap-12 items-start">
-        <div className="md:col-span-3 space-y-6">
-          <p className="text-xl leading-relaxed">
-            I'm Jeff Mitini Nkhoma, a Business Intelligence Specialist, Data Analyst Team Lead, Author, and Principal of
-            a Leadership & IT Institute with over 15 years of experience transforming data into actionable insights.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8">My Journey</h2>
+      <div className="grid md:grid-cols-5 gap-12 items-start mt-4">
+        <div className="md:col-span-3 space-y-6 about-section">
+          <h2 className="text-2xl font-bold">Profile</h2>
           <p className="leading-relaxed">
-            My career began in IT infrastructure, where I developed a fascination with how data could drive
-            decision-making. This led me to specialize in Business Intelligence, where I've helped organizations across
-            various industries leverage their data assets to achieve strategic objectives.
+            I'm Jeff Mitini Nkhoma, a Business Intelligence Specialist, Data
+            Analyst Team Lead with over 4 years of experience transforming data
+            into actionable insights.
+          </p>
+          <p className="leading-relaxed">
+            As a Data Analyst Team Lead, I've mentored professionals and built
+            high-performing analytics teams that deliver impactful insights. My
+            approach combines technical expertise with business acumen, ensuring
+            that data solutions address real organizational challenges.
           </p>
 
-          <p className="leading-relaxed">
-            As a Data Analyst Team Lead, I've mentored professionals and built high-performing analytics teams that
-            deliver impactful insights. My approach combines technical expertise with business acumen, ensuring that
-            data solutions address real organizational challenges.
-          </p>
-
-          <h2 className="text-2xl font-bold mt-8">Leadership & Education</h2>
-          <p className="leading-relaxed">
-            As the Principal of a Leadership & IT Institute, I'm passionate about developing the next generation of data
-            professionals. I believe in a hands-on approach to learning that emphasizes practical skills alongside
-            theoretical knowledge.
-          </p>
+          <h2 className="text-2xl font-bold mt-8">Education</h2>
 
           <p className="leading-relaxed">
-            My educational background includes advanced degrees in Information Systems and Business Analytics,
-            complemented by industry certifications in data visualization, cloud platforms, and project management.
+            My educational background includes advanced degrees in Information
+            Systems and Business Analytics, complemented by industry
+            certifications in data visualization, cloud platforms, and project
+            management.
           </p>
 
-          <h2 className="text-2xl font-bold mt-8">Author</h2>
+          {/* <h2 className="text-2xl font-bold mt-8">Author</h2>
           <p className="leading-relaxed">
-            Drawing from my professional experiences, I've authored books on data leadership and technology management.
-            These works aim to bridge the gap between technical implementation and strategic vision, helping leaders
-            harness the full potential of their data resources.
-          </p>
+            Drawing from my professional experiences, I've authored books on
+            data leadership and technology management. These works aim to bridge
+            the gap between technical implementation and strategic vision,
+            helping leaders harness the full potential of their data resources.
+          </p> */}
 
           <h2 className="text-2xl font-bold mt-8">My Mission</h2>
           <p className="leading-relaxed">
-            I'm dedicated to helping organizations build data-driven cultures where insights lead to innovation. Whether
-            through consulting, leadership, or education, my goal is to empower people to make better decisions through
-            data.
+            I'm dedicated to helping organizations build data-driven cultures
+            where insights lead to innovation. Whether through consulting,
+            leadership, or education, my goal is to empower people to make
+            better decisions through data.
           </p>
         </div>
 
-        <div className="md:col-span-2 sticky top-24">
+        <div className="md:col-span-2 md:order-1 sticky top-24">
           <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-0 group-hover:opacity-10 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=600&width=500&query=professional portrait of African business man in suit"
+                src="/jeff-2.jpg"
                 alt="Jeff Mitini Nkhoma"
                 width={500}
                 height={600}
@@ -98,5 +94,5 @@ export default function AboutPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

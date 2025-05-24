@@ -55,9 +55,7 @@ export default function Navbar() {
               height={40}
             />
             <div className="flex flex-col">
-              <span className="font-bold text-xl hidden sm:inline-block">
-                Jeff Mitini
-              </span>
+              <span className="font-bold">Jeff Mitini</span>
               <span className="text-xs text-muted-foreground">
                 Data Analyst | BI Developer
               </span>
