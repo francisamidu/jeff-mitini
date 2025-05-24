@@ -86,7 +86,11 @@ export default function PortfolioPage() {
       <div className="container max-w-5xl py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight mb-4">
-            My <span className="text-secondary">{"{data}"}</span> projects
+            My{" "}
+            <span className="text-secondary dark:text-blue-700/80">
+              {"{data}"}
+            </span>{" "}
+            projects
           </h1>
           <p className="text-xl text-muted-foreground">
             From Data Visualization to Business Intelligence Dashboards
@@ -121,7 +125,10 @@ export default function PortfolioPage() {
                   <div className="p-4">
                     <div className="flex items-center gap-2 mb-2">
                       {project.badges.map((badge) => (
-                        <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                        <span
+                          key={project.id + badge}
+                          className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full"
+                        >
                           {badge}
                         </span>
                       ))}
@@ -145,7 +152,7 @@ export default function PortfolioPage() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary text-sm hover:underline"
+                        className="text-foreground dark:hover:text-blue-700/80 text-sm hover:underline"
                       >
                         View on Tableau Public
                       </Link>
@@ -155,8 +162,11 @@ export default function PortfolioPage() {
               ))}
             </div>
 
-            <div className="flex justify-center mt-8">
-              <Button asChild>
+            <div className="flex justify-center mt-8 ">
+              <Button
+                asChild
+                className="dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+              >
                 <Link
                   href="https://public.tableau.com/app/profile/jeffrey.mitini.nkhoma/vizzes"
                   target="_blank"
@@ -177,7 +187,11 @@ export default function PortfolioPage() {
                 I'm currently working on adding my Power BI projects to this
                 portfolio. Check back soon!
               </p>
-              <Button variant="outline" asChild>
+              <Button
+                variant="outline"
+                asChild
+                className="dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+              >
                 <Link href="/#contact">Contact me for Power BI samples</Link>
               </Button>
             </div>
@@ -192,7 +206,11 @@ export default function PortfolioPage() {
                 I'm currently organizing my Python data analysis and
                 visualization projects. Check back soon!
               </p>
-              <Button variant="outline" asChild>
+              <Button
+                variant="outline"
+                asChild
+                className="dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+              >
                 <Link href="/#contact">Contact me for Python samples</Link>
               </Button>
             </div>
@@ -208,7 +226,10 @@ export default function PortfolioPage() {
             custom dashboards and visualizations. Let's discuss how I can help
             your organization make data-driven decisions.
           </p>
-          <Button asChild>
+          <Button
+            asChild
+            className="dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+          >
             <Link href="/contact">Get in Touch</Link>
           </Button>
         </div>

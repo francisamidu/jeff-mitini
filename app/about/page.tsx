@@ -10,22 +10,22 @@ export default function AboutPage() {
 
       <div className="grid md:grid-cols-5 gap-12 items-start mt-4">
         <div className="md:col-span-3 space-y-6 about-section">
-          <h2 className="text-2xl font-bold">Profile</h2>
-          <p className="leading-relaxed">
+          <h2 className="text-2xl text-white font-bold">Profile</h2>
+          <p className="leading-relaxed dark:text-muted-foreground">
             I'm Jeff Mitini Nkhoma, a Business Intelligence Specialist, Data
             Analyst Team Lead with over 4 years of experience transforming data
             into actionable insights.
           </p>
-          <p className="leading-relaxed">
+          <p className="leading-relaxed dark:text-muted-foreground">
             As a Data Analyst Team Lead, I've mentored professionals and built
             high-performing analytics teams that deliver impactful insights. My
             approach combines technical expertise with business acumen, ensuring
             that data solutions address real organizational challenges.
           </p>
 
-          <h2 className="text-2xl font-bold mt-8">Education</h2>
+          <h2 className="text-2xl text-white font-bold mt-8">Education</h2>
 
-          <p className="leading-relaxed">
+          <p className="leading-relaxed dark:text-muted-foreground">
             My educational background includes advanced degrees in Information
             Systems and Business Analytics, complemented by industry
             certifications in data visualization, cloud platforms, and project
@@ -40,8 +40,8 @@ export default function AboutPage() {
             helping leaders harness the full potential of their data resources.
           </p> */}
 
-          <h2 className="text-2xl font-bold mt-8">My Mission</h2>
-          <p className="leading-relaxed">
+          <h2 className="text-2xl text-white font-bold mt-8">My Mission</h2>
+          <p className="leading-relaxed dark:text-muted-foreground">
             I'm dedicated to helping organizations build data-driven cultures
             where insights lead to innovation. Whether through consulting,
             leadership, or education, my goal is to empower people to make

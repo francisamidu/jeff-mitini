@@ -50,7 +50,10 @@ const BookCard = ({
         <h3 className="font-bold text-xl">{title}</h3>
         <p className="text-sm text-muted-foreground mt-1">{description}</p>
         <div className="mt-4">
-          <Button asChild>
+          <Button
+            asChild
+            className="dark:bg-white dark:text-black dark:hover:bg-white/80 dark:hover:text-black"
+          >
             <Link href={link}>
               Learn More <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
