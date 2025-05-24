@@ -59,7 +59,7 @@ export default function Testimonials() {
     );
 
   return (
-    <section id="testimonials" className="bg-muted py-16">
+    <section id="testimonials" className="bg-card py-16">
       <div className="container md:mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
