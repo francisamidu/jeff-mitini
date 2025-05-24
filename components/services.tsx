@@ -38,7 +38,7 @@ function ServiceCard({
   buttonText: string;
 }) {
   return (
-    <div className="flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all duration-300 group h-full dark:bg-black/90 dark:border-slate-900/50">
+    <div className="flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all duration-300 group h-full dark:bg-card/90 dark:border-slate-900/50">
       <div className="w-16 h-16 flex items-center justify-center rounded-full bg-slate-100 text-slate-800 mb-6 group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white">
         {icon}
       </div>
@@ -69,7 +69,7 @@ function ServiceCard({
 export default function ServicesSection() {
   return (
     <section id="request">
-      <div className="w-full px-4 md:px-7 py-16 md:py-24 bg-gradient-to-b from-white to-slate-50 dark:from-black/80 dark:to-black/60">
+      <div className="w-full px-4 md:px-7 py-16 md:py-24 bg-gradient-to-b from-white to-slate-50 dark:from-card/80 dark:to-card/60">
         <div className="md:container px-2 md:px-6 md:mx-auto">
           <div className="text-center mb-12">
             <div className="text-center mb-8">
