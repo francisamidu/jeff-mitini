@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jeff Mitini Nkhoma – Portfolio & Business Intelligence Website
 
-## Getting Started
+A modern, accessible, and professional portfolio website for Jeff Mitini Nkhoma, Business Intelligence Specialist and Data Analyst Team Lead. This site showcases Jeff's expertise, projects, books, and consulting services in business intelligence and data analytics.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
+- **Professional Profile**: Overview of Jeff's background, experience, and mission.
+- **Skills & Technologies**: Interactive cards for BI, analytics, cloud, and development tools.
+- **Portfolio**: Data visualization, business intelligence dashboards, and Python analytics projects.
+- **Books**: Authored works on BI, analytics, and leadership, with links to purchase.
+- **Contact & Services**: Direct contact form (EmailJS) and description of consulting offerings.
+- **Testimonials**: Client and colleague feedback.
+- **Modern UI & Accessibility**: Responsive design, dark mode, keyboard navigation, ARIA attributes, and focus management.
+- **DRY & Maintainable Code**: Built with reusable React components and best practices.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) (React)
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide Icons
+- **Forms**: EmailJS integration for direct messaging
+- **Accessibility**: ARIA roles, focus trap, scroll lock, and keyboard navigation
+
+## 📂 Main Sections
+
+- **Home**: Hero section, summary, and quick links
+- **About**: Profile, education, mission, and values
+- **Portfolio**: Showcases BI/analytics projects (Tableau, Power BI, Python)
+- **Books**: Authored books with descriptions and purchase links
+- **Technologies**: Visual overview of tools and platforms
+- **Services**: Consulting and analytics offerings
+- **Contact**: Email form with validation and feedback
+- **Testimonials**: Reviews from clients and colleagues
+
+## 🖥️ Getting Started
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   # or
+yarn install
+   ```
+2. **Set up environment variables**
+   - Create a `.env.local` file for EmailJS (see `.env.example` if present)
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```
+4. **Open** [http://localhost:3000](http://localhost:3000)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤝 Purpose
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This website is designed to:
+- Present Jeff Mitini Nkhoma’s professional profile and expertise
+- Showcase real-world BI and analytics projects
+- Share authored books and resources
+- Facilitate networking, consulting, and client engagement
+- Demonstrate best practices in modern, accessible web development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ using Next.js, React, and Tailwind CSS. For questions or collaboration, use the contact form on the site!
