@@ -19,11 +19,25 @@ const books = [
   },
 ];
 
-const BookCard = ({ image, title, description, link }: { image: string; title: string; description: string; link: string }) => (
+const BookCard = ({
+  image,
+  title,
+  description,
+  link,
+}: {
+  image: string;
+  title: string;
+  description: string;
+  link: string;
+}) => (
   <div className="relative group">
     <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-0 group-hover:opacity-10 transition duration-1000 group-hover:duration-200"></div>
     <div className="relative flex items-center gap-6 bg-card p-6 rounded-lg border">
-      <div className={`w-28 h-36 relative flex-shrink-0${title === "IT Leadership Principles" ? " !h-36" : ""}`}>
+      <div
+        className={`w-28 h-36 relative flex-shrink-0${
+          title === "IT Leadership Principles" ? " !h-36" : ""
+        }`}
+      >
         <Image
           src={image}
           alt="Book cover"
@@ -49,7 +63,7 @@ const BookCard = ({ image, title, description, link }: { image: string; title: s
 
 const Books = () => {
   return (
-    <section id="books-preview" className="p-8">
+    <section id="books-preview" className="p-4 md:p-8">
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Published Works
