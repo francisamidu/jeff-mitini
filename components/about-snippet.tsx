@@ -19,8 +19,8 @@ export default function AboutSnippet() {
         <div className="space-y-4">
           <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
           <p className="text-muted-foreground ">
-            <span className="block my-4">👋 Hey, I{`'`}m Jeff</span>
-            <span>
+            <span className="block my-4 text-lg">👋 Hey, I{`'`}m Jeff</span>
+            <span className="text-lg">
               I{`'`}m here to help you design, develop, and deploy BI solutions
               to drive business impact. I spend my days leveraging data
               analysis, data visualization, and statistical techniques to
@@ -77,13 +77,13 @@ export default function AboutSnippet() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="relative"
         >
-          <div className="relative ">
+          <div className="relative aspect-square rounded-lg overflow-hidden">
             <Image
-              src="/jeff-2.jpg"
+              src="https://res.cloudinary.com/hatchways-test/image/upload/f_auto,q_auto/etbr2k5bghl68bvfg6zp"
               alt="Jeff Mitini Nkhoma"
-              width={100}
-              height={100}
-              className="rounded-lg object-cover w-full"
+              fill
+              loading="lazy"
+              // className="object-contain"
             />
           </div>
         </motion.div>

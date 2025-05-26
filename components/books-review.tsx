@@ -6,15 +6,9 @@ import { Button } from "@/components/ui/button";
 
 const books = [
   {
-    image: "/data-visualization-book-cover.png",
-    title: "Data Leadership",
-    description: "Transform your organization with data-driven insights",
-    link: "/books",
-  },
-  {
-    image: "/leadership-book-cover.png",
-    title: "IT Leadership Principles",
-    description: "Guide to effective leadership in technology",
+    image: "/Leadership from the heart-01.webp",
+    title: "Leadership from the heart",
+    description: "Lessons I've learnt from being a leader",
     link: "/books",
   },
 ];

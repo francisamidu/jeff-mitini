@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-  themeColor: "#02000f",
+  "theme-color": "#02000f",
   alternates: {
     canonical: "https://jeffmitini.com",
   },

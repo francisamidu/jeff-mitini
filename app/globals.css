@@ -119,13 +119,13 @@
   body {
     @apply bg-background text-foreground;
   }
-  button:hover{
+  button:hover {
     cursor: pointer;
   }
-  html{
+  html {
     scroll-behavior: smooth;
   }
-  .about-section p{
+  .about-section p {
     color: var(--text-muted-foreground) !important;
   }
 }
@@ -134,7 +134,7 @@
 .analysis-polyline {
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
-  animation: polyline-draw 2.2s cubic-bezier(0.4,0,0.2,1) forwards;
+  animation: polyline-draw 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 .analysis-polyline.polyline-2 {
   animation-delay: 0.5s;
@@ -147,32 +147,41 @@
 
 .analysis-point {
   opacity: 0;
-  transform: scale(0.8);
-  animation: point-fade-in 1s cubic-bezier(0.4,0,0.2,1) forwards, point-pulse 2.5s 1s infinite cubic-bezier(0.4,0,0.2,1);
+  animation: point-fade-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    point-pulse 2.5s 1s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
-.analysis-point.point-1 { animation-delay: 1.0s, 2.0s; }
-.analysis-point.point-2 { animation-delay: 1.2s, 2.2s; }
-.analysis-point.point-3 { animation-delay: 1.4s, 2.4s; }
-.analysis-point.point-4 { animation-delay: 1.6s, 2.6s; }
-.analysis-point.point-5 { animation-delay: 1.8s, 2.8s; }
+
 @keyframes point-fade-in {
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
+
 @keyframes point-pulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+  0%,
+  100% {
+    r: 4;
+  }
+  50% {
+    r: 5;
+  }
 }
 
 .analysis-point-clicked {
-  animation: point-clicked 0.4s cubic-bezier(0.4,0,0.2,1);
-  filter: brightness(1.7) drop-shadow(0 0 8px #60A5FA44);
+  animation: point-clicked 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1.7) drop-shadow(0 0 8px #60a5fa44);
 }
 @keyframes point-clicked {
-  0% { transform: scale(1); filter: brightness(1.7) drop-shadow(0 0 8px #60A5FA44); }
-  50% { transform: scale(1.5); filter: brightness(2) drop-shadow(0 0 16px #60A5FA88); }
-  100% { transform: scale(1); filter: brightness(1.7) drop-shadow(0 0 8px #60A5FA44); }
+  0% {
+    transform: scale(1);
+    filter: brightness(1.7) drop-shadow(0 0 8px #60a5fa44);
+  }
+  50% {
+    transform: scale(1.5);
+    filter: brightness(2) drop-shadow(0 0 16px #60a5fa88);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1.7) drop-shadow(0 0 8px #60a5fa44);
+  }
 }
-

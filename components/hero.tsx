@@ -100,47 +100,84 @@ export default function Hero() {
             opacity="0.11"
           />
 
+          {/* Motion Paths */}
+          <defs>
+            <path
+              id="bluePath"
+              d="M0,550 180,420 360,500 540,380 720,330 900,400 1080,250 1260,320 1440,210"
+              fill="none"
+            />
+            <path
+              id="redPath"
+              d="M0,500 200,400 400,420 600,320 800,350 1000,200 1200,300 1440,180"
+              fill="none"
+            />
+          </defs>
+
           {/* Data points */}
           <circle
             className="analysis-point point-1"
-            cx="200"
-            cy="400"
             r="6"
             fill="#60A5FA"
             opacity="0.12"
-          />
+          >
+            <animateMotion
+              dur="8s"
+              repeatCount="indefinite"
+              path="M0,550 180,420 360,500 540,380 720,330 900,400 1080,250 1260,320 1440,210"
+            />
+          </circle>
           <circle
             className="analysis-point point-2"
-            cx="600"
-            cy="320"
             r="6"
             fill="#60A5FA"
             opacity="0.12"
-          />
+          >
+            <animateMotion
+              dur="8s"
+              begin="2s"
+              repeatCount="indefinite"
+              path="M0,550 180,420 360,500 540,380 720,330 900,400 1080,250 1260,320 1440,210"
+            />
+          </circle>
           <circle
             className="analysis-point point-3"
-            cx="1000"
-            cy="200"
             r="6"
             fill="#60A5FA"
             opacity="0.12"
-          />
+          >
+            <animateMotion
+              dur="8s"
+              begin="4s"
+              repeatCount="indefinite"
+              path="M0,550 180,420 360,500 540,380 720,330 900,400 1080,250 1260,320 1440,210"
+            />
+          </circle>
           <circle
             className="analysis-point point-4"
-            cx="400"
-            cy="420"
             r="4"
             fill="#F472B6"
             opacity="0.13"
-          />
+          >
+            <animateMotion
+              dur="8s"
+              repeatCount="indefinite"
+              path="M0,500 200,400 400,420 600,320 800,350 1000,200 1200,300 1440,180"
+            />
+          </circle>
           <circle
             className="analysis-point point-5"
-            cx="900"
-            cy="400"
             r="4"
             fill="#F472B6"
             opacity="0.13"
-          />
+          >
+            <animateMotion
+              dur="8s"
+              begin="3s"
+              repeatCount="indefinite"
+              path="M0,500 200,400 400,420 600,320 800,350 1000,200 1200,300 1440,180"
+            />
+          </circle>
         </svg>
       </div>
     </section>
