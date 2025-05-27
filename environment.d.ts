@@ -4,5 +4,7 @@ namespace NodeJS {
       NEXT_PUBLIC_EMAIL_PRIVATE_KEY: string;
       NEXT_PUBLIC_EMAIL_TEMPLATE_ID: string;
       NEXT_PUBLIC_EMAIL_SERVICE_ID: string;
+      NEXT_PUBLIC_STRAPI_URL: string;
+      NEXT_PUBLIC_PAGE_LIMIT: string;
     }
   }

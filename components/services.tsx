@@ -21,7 +21,7 @@ const services = [
     icon: <Users size={28} />,
     title: "Collaboration",
     description:
-      "Interested in collaborating on data-driven projects? Let's partner on developing innovative BI solutions, research projects, or data analysis initiatives that deliver measurable results.",
+      "Interested in collaborating on data-driven projects or someone to co-author your book? Let's partner on ..",
     buttonText: "Collaboration Request",
   },
 ];
