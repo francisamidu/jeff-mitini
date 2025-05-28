@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Clock } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ArticleExtended } from "@/types/types";
 
@@ -25,7 +25,7 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
       </div>
       <div className="flex flex-col justify-center">
         <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-          <span className="uppercase font-medium text-purple-600">
+          <span className="uppercase font-medium text-secondary">
             {article.categories[0].name}
           </span>
           <span>•</span>
@@ -37,7 +37,7 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
         <h1 className="text-3xl font-bold mb-4">
           <Link
             href={`/articles/${article.slug}`}
-            className="hover:text-purple-700 transition-colors"
+            className="hover:text-secondary transition-colors"
           >
             {article.title}
           </Link>
@@ -60,8 +60,17 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
             })}
           </span>
         </div>
-        <Button asChild className="bg-purple-600 hover:bg-purple-700 w-fit">
-          <Link href={`/articles/${article.slug}`}>Read Article</Link>
+        <Button
+          asChild
+          className="group bg-secondary rounded-none hover:bg-secondary/90 w-fit"
+        >
+          <Link href={`/articles/${article.slug}`}>
+            Read Article
+            <ArrowRight
+              className="group-hover:translate-x-1 transition-transform duration-300"
+              size={16}
+            />
+          </Link>
         </Button>
       </div>
     </div>

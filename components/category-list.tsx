@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export function CategoryList() {
   const categories = [
@@ -8,7 +8,7 @@ export function CategoryList() {
     { name: "Inspiration", count: 5 },
     { name: "Lifestyle", count: 6 },
     { name: "Travel", count: 8 },
-  ]
+  ];
 
   return (
     <div>
@@ -18,7 +18,7 @@ export function CategoryList() {
           <li key={category.name} className="flex justify-between items-center">
             <Link
               href={`/category/${category.name.toLowerCase()}`}
-              className="text-gray-700 hover:text-purple-700 transition-colors"
+              className="text-gray-700 hover:text-secondary transition-colors"
             >
               {category.name}
             </Link>
@@ -27,5 +27,5 @@ export function CategoryList() {
         ))}
       </ul>
     </div>
-  )
+  );
 }

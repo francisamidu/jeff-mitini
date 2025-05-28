@@ -1,39 +1,40 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export function Newsletter() {
-  const [email, setEmail] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-  const [error, setError] = useState("")
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setError("")
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
 
     try {
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      setIsSuccess(true)
-      setEmail("")
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setIsSuccess(true);
+      setEmail("");
     } catch (err) {
-      setError("Failed to subscribe. Please try again.")
+      setError("Failed to subscribe. Please try again.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="bg-purple-100 p-6 rounded-lg">
       <h3 className="text-xl font-bold mb-2">Newsletter</h3>
       <p className="text-gray-600 text-sm mb-4">
-        Subscribe to my newsletter and I'll keep you posted with the latest updates!
+        Subscribe to my newsletter and I'll keep you posted with the latest
+        updates!
       </p>
 
       {isSuccess ? (
@@ -50,7 +51,11 @@ export function Newsletter() {
             required
             className="flex-1"
           />
-          <Button type="submit" disabled={isSubmitting} className="bg-purple-600 hover:bg-purple-700">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="group bg-secondary hover:bg-secondary/90"
+          >
             {isSubmitting ? "..." : "Subscribe"}
           </Button>
         </form>
@@ -58,5 +63,5 @@ export function Newsletter() {
 
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
     </div>
-  )
+  );
 }

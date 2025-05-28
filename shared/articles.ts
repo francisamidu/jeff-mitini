@@ -1,24 +1,25 @@
-// Sample dummy data to use before connecting to Strapi
-
-import { Article } from "@/types/types"
+import { Article } from "@/types/types";
 
 export const authors = [
-    {
-      id: 1,
-      name: "Bree Mukami",
-      bio: "Content writer fascinated by content creation, culture, and lifestyle",
-      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+  {
+    id: 1,
+    name: "Jeff Mitini",
+    bio: "BI Developer, Data Analyst and Author with 10+ years of experience",
+    avatar: {
+      url: "/jeff.jpg",
     },
-  ]
-  
+    email: "jeff.mitini@example.com",
+  },
+];
+
 const articles: Article[] = [
-    {
-      id: 1,
-      title: "Traveling solo? Here are some must see spots",
-      slug: "traveling-solo-must-see-spots",
-      description:
-        "Traveling alone can be one of the most rewarding experiences. Here are some of the best destinations for solo travelers that offer safety, friendly locals, and amazing experiences.",
-      content: `
+  {
+    id: 1,
+    title: "Traveling solo? Here are some must see spots",
+    slug: "traveling-solo-must-see-spots",
+    description:
+      "Traveling alone can be one of the most rewarding experiences. Here are some of the best destinations for solo travelers that offer safety, friendly locals, and amazing experiences.",
+    content: `
         <p>Traveling alone can be one of the most rewarding experiences. It allows you to fully immerse yourself in new cultures, meet interesting people, and discover more about yourself in the process. If you're considering a solo adventure, here are some destinations that offer the perfect blend of safety, friendly locals, and unforgettable experiences.</p>
         
         <h2>1. Kyoto, Japan</h2>
@@ -53,29 +54,29 @@ const articles: Article[] = [
         
         <p>Solo travel allows you to set your own pace, follow your interests, and challenge yourself in new ways. These destinations offer the perfect starting point for your solo adventure, combining safety with unforgettable experiences.</p>
       `,
-      publishedAt: "2022-09-25T10:00:00Z",
-      categories: [{ name: "Travel" }],
-      coverImage: {
-        url: "/placeholder.svg?height=400&width=600&query=colorful gradient sphere",
-      },
-      author: {
-        id: 1,
-        name: "Bree Mukami",
-        email: "bree.mukami@example.com",
-        avatar: {
-          url: "https://randomuser.me/api/portraits/men/1.jpg",
-        },
-      },
-      createdAt: "2022-09-25T10:00:00Z",
-      recentPosts: [],
+    publishedAt: "2022-09-25T10:00:00Z",
+    categories: [{ name: "Travel" }],
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    {
-      id: 2,
-      title: "Headed to Asia in October? The 10 best places to visit",
-      slug: "headed-to-asia-in-october",
-      description:
-        "Bursting with culture, abundant nature and fragrant tastes, health travel's luxury wellness holidays in Asia are hosted in some of the most fascinating places.",
-      content: `
+    author: {
+      id: 1,
+      name: "Bree Mukami",
+      email: "bree.mukami@example.com",
+      avatar: {
+        url: "https://randomuser.me/api/portraits/men/1.jpg",
+      },
+    },
+    createdAt: "2022-09-25T10:00:00Z",
+    recentPosts: [],
+  },
+  {
+    id: 2,
+    title: "Headed to Asia in October? The 10 best places to visit",
+    slug: "headed-to-asia-in-october",
+    description:
+      "Bursting with culture, abundant nature and fragrant tastes, health travel's luxury wellness holidays in Asia are hosted in some of the most fascinating places.",
+    content: `
         <p>October is an ideal time to visit many parts of Asia. The monsoon season has typically ended in most regions, temperatures are moderate, and tourist crowds are thinner than during peak season. Here are the ten best places to visit in Asia during October.</p>
         
         <h2>1. Kyoto, Japan</h2>
@@ -130,29 +131,29 @@ const articles: Article[] = [
         
         <p>Asia in October offers the perfect combination of good weather, natural beauty, and cultural experiences without the peak season crowds. Whether you're seeking spiritual enlightenment, culinary adventures, or simply stunning landscapes, these destinations will provide unforgettable experiences.</p>
       `,
-      publishedAt: "2022-09-11T14:30:00Z",
-      categories: [{ name: "Travel" }],
-      coverImage: {
-        url: "/placeholder.svg?height=300&width=500&query=blue pink gradient",
-      },
-      author: {
-        id: 1,
-        name: "Bree Mukami",
-        email: "bree.mukami@example.com",
-        avatar: {
-          url: "https://randomuser.me/api/portraits/men/1.jpg",
-        },
-      },
-      createdAt: "2022-09-11T14:30:00Z",
-      recentPosts: [],
+    publishedAt: "2022-09-11T14:30:00Z",
+    categories: [{ name: "Travel" }],
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    {
-      id: 3,
-      title: "4 Ways to style the girl with curves tunic sweater",
-      slug: "style-girl-with-curves-tunic-sweater",
-      description:
-        "One of the best ways to determine if a garment is worth adding to your wardrobe, is making sure it can be styled multiple ways.",
-      content: `
+    author: {
+      id: 1,
+      name: "Bree Mukami",
+      email: "bree.mukami@example.com",
+      avatar: {
+        url: "https://randomuser.me/api/portraits/men/1.jpg",
+      },
+    },
+    createdAt: "2022-09-11T14:30:00Z",
+    recentPosts: [],
+  },
+  {
+    id: 3,
+    title: "4 Ways to style the girl with curves tunic sweater",
+    slug: "style-girl-with-curves-tunic-sweater",
+    description:
+      "One of the best ways to determine if a garment is worth adding to your wardrobe, is making sure it can be styled multiple ways.",
+    content: `
         <p>The tunic sweater is a versatile piece that deserves a place in every woman's wardrobe, especially for those with curves. Its longer length provides flattering coverage while offering endless styling possibilities. Here are four stylish ways to wear a tunic sweater that celebrates your curves.</p>
         
         <h2>1. The Classic Leggings Look</h2>
@@ -223,29 +224,29 @@ const articles: Article[] = [
         
         <p>The beauty of a tunic sweater is its versatility. By styling it these different ways, you'll get maximum value from this wardrobe staple while flattering your curves beautifully.</p>
       `,
-      publishedAt: "2022-09-07T09:15:00Z",
-      categories: [{ name: "Fashion" }],
-      coverImage: {
-        url: "/placeholder.svg?height=300&width=500&query=pink orange gradient",
-      },
-      author: {
-        id: 1,
-        name: "Bree Mukami",
-        email: "bree.mukami@example.com",
-        avatar: {
-          url: "https://randomuser.me/api/portraits/men/1.jpg",
-        },
-      },
-      createdAt: "2022-09-07T09:15:00Z",
-      recentPosts: [],
+    publishedAt: "2022-09-07T09:15:00Z",
+    categories: [{ name: "Fashion" }],
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    {
-      id: 4,
-      title: "6 Amazing health benefits of dark chocolate",
-      slug: "health-benefits-dark-chocolate",
-      description:
-        "If health wasn't reason enough for you to go on and indulge in dark chocolate, then here are some amazing health benefits that will convince you.",
-      content: `
+    author: {
+      id: 1,
+      name: "Bree Mukami",
+      email: "bree.mukami@example.com",
+      avatar: {
+        url: "https://randomuser.me/api/portraits/men/1.jpg",
+      },
+    },
+    createdAt: "2022-09-07T09:15:00Z",
+    recentPosts: [],
+  },
+  {
+    id: 4,
+    title: "6 Amazing health benefits of dark chocolate",
+    slug: "health-benefits-dark-chocolate",
+    description:
+      "If health wasn't reason enough for you to go on and indulge in dark chocolate, then here are some amazing health benefits that will convince you.",
+    content: `
         <p>Dark chocolate isn't just a delicious treat; it's also packed with nutrients that can positively impact your health. Made from the seed of the cacao tree, high-quality dark chocolate with a high cocoa content contains fiber, iron, magnesium, copper, manganese, and several other beneficial compounds. Here are six evidence-based health benefits of dark chocolate.</p>
         
         <h2>1. Powerful Source of Antioxidants</h2>
@@ -317,29 +318,29 @@ const articles: Article[] = [
         
         <p>Remember that while dark chocolate offers health benefits, it's still calorie-dense and should be consumed in moderation – about 1-2 ounces (30-60g) per day is sufficient to reap the benefits without overindulging.</p>
       `,
-      publishedAt: "2022-08-11T11:45:00Z",
-      categories: [{ name: "Health" }],
-      coverImage: {
-        url: "/placeholder.svg?height=300&width=500&query=blue green gradient",
-      },
-      author: {
-        id: 1,
-        name: "Bree Mukami",
-        email: "bree.mukami@example.com",
-        avatar: {
-          url: "https://randomuser.me/api/portraits/men/1.jpg",
-        },
-      },
-      createdAt: "2022-08-11T11:45:00Z",
-      recentPosts: [],
+    publishedAt: "2022-08-11T11:45:00Z",
+    categories: [{ name: "Health" }],
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    {
-      id: 5,
-      title: "How to choose a purpose in life when we're overwhelmed by options",
-      slug: "choose-purpose-in-life",
-      description:
-        "In a world filled with choices, look at your past to identify patterns in what brings you joy and meaning. Then, take small steps to explore those areas.",
-      content: `
+    author: {
+      id: 1,
+      name: "Bree Mukami",
+      email: "bree.mukami@example.com",
+      avatar: {
+        url: "https://randomuser.me/api/portraits/men/1.jpg",
+      },
+    },
+    createdAt: "2022-08-11T11:45:00Z",
+    recentPosts: [],
+  },
+  {
+    id: 5,
+    title: "How to choose a purpose in life when we're overwhelmed by options",
+    slug: "choose-purpose-in-life",
+    description:
+      "In a world filled with choices, look at your past to identify patterns in what brings you joy and meaning. Then, take small steps to explore those areas.",
+    content: `
         <p>In today's world of endless possibilities, many of us struggle with a paradox: having too many options can actually make it harder to find our purpose. When faced with countless paths, how do we choose the one that will bring us fulfillment? Here's a thoughtful approach to finding your purpose when you're overwhelmed by options.</p>
         
         <h2>Understand That Purpose Is Fluid</h2>
@@ -435,29 +436,29 @@ const articles: Article[] = [
         
         <p>Remember that purpose often reveals itself gradually through living intentionally, rather than through a single moment of clarity. Be patient with the process and trust that meaningful direction will emerge as you take thoughtful steps forward.</p>
       `,
-      publishedAt: "2022-07-15T10:00:00Z",
-      categories: [{ name: "Lifestyle" }],
-      coverImage: {
-        url: "/placeholder.svg?height=300&width=500&query=pink gradient",
-      },
-      author: {
-        id: 1,
-        name: "Bree Mukami",
-        email: "bree.mukami@example.com",
-        avatar: {
-          url: "https://randomuser.me/api/portraits/men/1.jpg",
-        },
-      },
-      createdAt: "2022-07-15T10:00:00Z",
-      recentPosts: [],
+    publishedAt: "2022-07-15T10:00:00Z",
+    categories: [{ name: "Lifestyle" }],
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    {
-      id: 6,
-      title: "3 Simple Habits for Daily Mindfulness",
-      slug: "simple-habits-daily-mindfulness",
-      description:
-        "Incorporate these three simple practices into your daily routine to cultivate greater mindfulness and presence in your everyday life.",
-      content: `
+    author: {
+      id: 1,
+      name: "Bree Mukami",
+      email: "bree.mukami@example.com",
+      avatar: {
+        url: "https://randomuser.me/api/portraits/men/1.jpg",
+      },
+    },
+    createdAt: "2022-07-15T10:00:00Z",
+    recentPosts: [],
+  },
+  {
+    id: 6,
+    title: "3 Simple Habits for Daily Mindfulness",
+    slug: "simple-habits-daily-mindfulness",
+    description:
+      "Incorporate these three simple practices into your daily routine to cultivate greater mindfulness and presence in your everyday life.",
+    content: `
         <p>In our fast-paced world, mindfulness—the practice of being fully present and engaged in the moment—has become an essential skill for maintaining mental well-being. The good news is that cultivating mindfulness doesn't require hours of meditation or major lifestyle changes. By incorporating these three simple habits into your daily routine, you can develop greater awareness and presence in your everyday life.</p>
         
         <h2>1. The Mindful Morning Minute</h2>
@@ -524,27 +525,29 @@ const articles: Article[] = [
         
         <p>Remember that mindfulness is not about achieving a particular state or eliminating thoughts. It's about developing the capacity to notice your experience as it unfolds, with curiosity and kindness. These three simple habits—the morning minute, transition moments, and evening gratitude scan—create natural opportunities throughout your day to return to the present moment, gradually building a more mindful approach to living.</p>
       `,
-      publishedAt: "2022-06-20T09:30:00Z",
-      categories: [{ name: "Lifestyle" }],
-      coverImage: {
-        url: "/placeholder.svg?height=300&width=500&query=purple gradient",
-      },
-      author: {
-        id: 1,
-        name: "Bree Mukami",
-        email: "bree.mukami@example.com",
-        avatar: {
-          url: "https://randomuser.me/api/portraits/men/1.jpg",
-        },
-      },
-      createdAt: "2022-06-20T09:30:00Z",
-      recentPosts: [],
+    publishedAt: "2022-06-20T09:30:00Z",
+    categories: [{ name: "Lifestyle" }],
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-  ]
+    author: {
+      id: 1,
+      name: "Bree Mukami",
+      email: "bree.mukami@example.com",
+      avatar: {
+        url: "https://randomuser.me/api/portraits/men/1.jpg",
+      },
+    },
+    createdAt: "2022-06-20T09:30:00Z",
+    recentPosts: [],
+  },
+];
 
 const articlesExtended = articles.map((article) => ({
   ...article,
-  readTime: `${Math.ceil(article.content.trim().split(/\s+/).length / 200)} min read`,
+  readTime: `${Math.ceil(
+    article.content.trim().split(/\s+/).length / 200
+  )} min read`,
   recentPosts: articles
     .filter((a) => a.id !== article.id)
     .slice(0, 3)
@@ -559,9 +562,7 @@ const articlesExtended = articles.map((article) => ({
       coverImage: a.coverImage,
       author: a.author,
       categories: a.categories,
-    }))
+    })),
 }));
 
 export default articlesExtended;
-
-  

@@ -15,7 +15,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function ArticlePage({ params }: { params: { slug: string } }) {
+export default async function ArticlePage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const article = await fetchArticleBySlug(params.slug)
 
   if (!article) {

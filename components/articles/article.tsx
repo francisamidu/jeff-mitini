@@ -1,4 +1,4 @@
-import articles from "@/shared/articles";
+import articles, { authors } from "@/shared/articles";
 import { Link, ArrowRight, Clock } from "lucide-react";
 import React from "react";
 import { ArticleCard } from "../article-card";
@@ -40,7 +40,7 @@ const ArticleComponent = ({
         </div>
 
         <div className="lg:col-span-1">
-          <AuthorProfile author={featuredArticle.author} />
+          <AuthorProfile author={authors[0]} />
 
           <div className="mt-12">
             <CategoryList />
@@ -57,7 +57,7 @@ const ArticleComponent = ({
           <h2 className="text-2xl font-bold">Latest Articles</h2>
           <Link
             href="/latest-articles"
-            className="text-purple-600 hover:text-purple-800 flex items-center gap-1"
+            className="text-foreground hover:text-secondary flex items-center gap-1"
           >
             View More <ArrowRight size={16} />
           </Link>
@@ -78,7 +78,7 @@ const ArticleComponent = ({
                 />
               </div>
               <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                <span className="uppercase font-medium text-purple-600">
+                <span className="uppercase font-medium text-foreground">
                   {article.categories[0].name}
                 </span>
                 <span>•</span>
@@ -87,7 +87,7 @@ const ArticleComponent = ({
                   <span>{article.readTime || "4 min read"}</span>
                 </div>
               </div>
-              <h3 className="font-bold mb-2 group-hover:text-purple-700 transition-colors">
+              <h3 className="font-bold mb-2 group-hover:text-secondary transition-colors">
                 <Link href={`/articles/${article.slug}`}>{article.title}</Link>
               </h3>
             </div>

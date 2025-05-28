@@ -8,8 +8,6 @@ import {
   ArticleExtended,
 } from "../types/types";
 
-
-
 export const api = ky.create({
   prefixUrl: process.env.NEXT_PUBLIC_STRAPI_URL,
 });
@@ -17,18 +15,31 @@ export const api = ky.create({
 export const getAllPosts = async (
   page: number = 1,
   searchQuery: string = ""
-): Promise<{ posts: Article[]; pagination: StrapiListResponse<Article>["meta"]["pagination"] }> => {
+): Promise<{
+  posts: Article[];
+  pagination: StrapiListResponse<Article>["meta"]["pagination"];
+}> => {
   try {
-    const filters = searchQuery ? { title: { $containsi: searchQuery } } : undefined;
-    const response = await strapiClient
-      .collection("blogs")
-      .find({
-        populate: ["author", "categories", "coverImage"],
-        pagination: { page, pageSize: Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6 },
-        filters,
-      });
-    const posts = (response.data ?? []).map((post) => post as unknown as Article);
-    const pagination = response.meta?.pagination ?? { page: 1, pageSize: 0, pageCount: 0, total: 0 };
+    const filters = searchQuery
+      ? { title: { $containsi: searchQuery } }
+      : undefined;
+    const response = await strapiClient.collection("articles").find({
+      populate: ["author", "categories", "coverImage"],
+      pagination: {
+        page,
+        pageSize: Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6,
+      },
+      filters,
+    });
+    const posts = (response.data ?? []).map(
+      (post) => post as unknown as Article
+    );
+    const pagination = response.meta?.pagination ?? {
+      page: 1,
+      pageSize: 0,
+      pageCount: 0,
+      total: 0,
+    };
     return {
       posts,
       pagination,
@@ -43,7 +54,7 @@ export const getAllPosts = async (
 export const getHello = async () => {
   try {
     const response = await strapiClient.fetch("articles/hello");
-    return response
+    return response.json();
   } catch (error) {
     console.error("Error fetching hello:", error);
     throw new Error("Failed to fetch hello");
@@ -53,12 +64,10 @@ export const getHello = async () => {
 // Get post by slug
 export const getPostBySlug = async (slug: string): Promise<Article> => {
   try {
-    const response = await strapiClient
-      .collection("blogs")
-      .find({
-        populate: ["author", "categories", "coverImage"],
-        filters: { slug: { $eq: slug } },
-      });
+    const response = await strapiClient.collection("articles").find({
+      populate: ["author", "categories", "coverImage"],
+      filters: { slug: { $eq: slug } },
+    });
     const posts = (response.data ?? []) as unknown as Article[];
     if (posts.length > 0) {
       return posts[0];
@@ -92,7 +101,9 @@ export const uploadImage = async (image: File, refId: number): Promise<any> => {
     formData.append("refId", refId.toString()); // refId: Blog post ID
     formData.append("field", "cover"); // field: Image field name in the blog
 
-    const response = await api.post("api/upload", { body: formData }).json<any[]>(); // Strapi route to upload files and images
+    const response = await api
+      .post("api/upload", { body: formData })
+      .json<any[]>(); // Strapi route to upload files and images
     const uploadedImage = response[0];
     return uploadedImage; // Return full image metadata
   } catch (err) {
@@ -102,9 +113,13 @@ export const uploadImage = async (image: File, refId: number): Promise<any> => {
 };
 
 // Create a blog post and handle all fields
-export const createPost = async (postData: UserArticleData): Promise<Article> => {
+export const createPost = async (
+  postData: UserArticleData
+): Promise<Article> => {
   try {
-    const response = await strapiClient.collection("blogs").create({ data: postData });
+    const response = await strapiClient
+      .collection("articles")
+      .create({ data: postData });
     return response.data as unknown as Article;
   } catch (error) {
     console.error("Error creating post:", error);
@@ -116,16 +131,28 @@ export const createPost = async (postData: UserArticleData): Promise<Article> =>
 export const fetchMoreArticles = async (
   page: number = 1,
   pageSize: number = Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6
-): Promise<{ articles: ArticleExtended[]; pagination: StrapiListResponse<Article>["meta"]["pagination"] }> => {
+): Promise<{
+  articles: ArticleExtended[];
+  pagination: StrapiListResponse<Article>["meta"]["pagination"];
+}> => {
   try {
-    const response = await strapiClient
-      .collection("articles")
-      .find({
-        populate: ["author", "categories", "coverImage"],
-        pagination: { page, pageSize },
-      });
+    const response = await strapiClient.collection("articles").find({
+      populate: {
+        author: "*",
+        categories: {
+          populate: ["articles"],
+        },
+        coverImage: "*",
+      },
+      pagination: { page, pageSize },
+    });
     const articles = (response.data ?? []) as unknown as ArticleExtended[];
-    const pagination = response.meta?.pagination ?? { page: 1, pageSize: 0, pageCount: 0, total: 0 };
+    const pagination = response.meta?.pagination ?? {
+      page: 1,
+      pageSize: 0,
+      pageCount: 0,
+      total: 0,
+    };
     return {
       articles,
       pagination,

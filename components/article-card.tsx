@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Clock } from "lucide-react";
+import { Clock, Tag } from "lucide-react";
 import type { ArticleExtended } from "@/types/types";
 
 interface ArticleCardProps {
@@ -21,17 +21,17 @@ export function ArticleCard({ article }: ArticleCardProps) {
           className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
-      <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-        <span className="uppercase font-medium text-purple-600">
+      <div className="flex justify-between items-center gap-2 text-xs text-gray-500 mb-2">
+        <span className="uppercase font-medium text-secondary flex items-center gap-1">
+          <Tag size={14} />
           {article.categories[0].name}
         </span>
-        <span>•</span>
         <div className="flex items-center gap-1">
           <Clock size={14} />
           <span>{article.readTime || "3 min read"}</span>
         </div>
       </div>
-      <h3 className="text-xl font-bold mb-2 group-hover:text-purple-700 transition-colors">
+      <h3 className="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">
         <Link href={`/articles/${article.slug}`}>{article.title}</Link>
       </h3>
       <p className="text-gray-600 mb-4 line-clamp-2">{article.description}</p>
