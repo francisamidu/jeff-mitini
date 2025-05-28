@@ -40,7 +40,6 @@ export interface ImageData {
 
   export interface ArticleExtended extends Article {
     readTime: string;
-    excerpt: string;
     publishedAt: string;
   }
   

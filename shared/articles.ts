@@ -7,11 +7,11 @@ export const authors = [
       id: 1,
       name: "Bree Mukami",
       bio: "Content writer fascinated by content creation, culture, and lifestyle",
-      avatar: "/images/bree-mukami.jpg",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     },
   ]
   
-  export const articles: Article[] = [
+const articles: Article[] = [
     {
       id: 1,
       title: "Traveling solo? Here are some must see spots",
@@ -63,7 +63,7 @@ export const authors = [
         name: "Bree Mukami",
         email: "bree.mukami@example.com",
         avatar: {
-          url: "/images/bree-mukami.jpg",
+          url: "https://randomuser.me/api/portraits/men/1.jpg",
         },
       },
       createdAt: "2022-09-25T10:00:00Z",
@@ -140,7 +140,7 @@ export const authors = [
         name: "Bree Mukami",
         email: "bree.mukami@example.com",
         avatar: {
-          url: "/images/bree-mukami.jpg",
+          url: "https://randomuser.me/api/portraits/men/1.jpg",
         },
       },
       createdAt: "2022-09-11T14:30:00Z",
@@ -233,7 +233,7 @@ export const authors = [
         name: "Bree Mukami",
         email: "bree.mukami@example.com",
         avatar: {
-          url: "/images/bree-mukami.jpg",
+          url: "https://randomuser.me/api/portraits/men/1.jpg",
         },
       },
       createdAt: "2022-09-07T09:15:00Z",
@@ -327,7 +327,7 @@ export const authors = [
         name: "Bree Mukami",
         email: "bree.mukami@example.com",
         avatar: {
-          url: "/images/bree-mukami.jpg",
+          url: "https://randomuser.me/api/portraits/men/1.jpg",
         },
       },
       createdAt: "2022-08-11T11:45:00Z",
@@ -445,7 +445,7 @@ export const authors = [
         name: "Bree Mukami",
         email: "bree.mukami@example.com",
         avatar: {
-          url: "/images/bree-mukami.jpg",
+          url: "https://randomuser.me/api/portraits/men/1.jpg",
         },
       },
       createdAt: "2022-07-15T10:00:00Z",
@@ -534,30 +534,34 @@ export const authors = [
         name: "Bree Mukami",
         email: "bree.mukami@example.com",
         avatar: {
-          url: "/images/bree-mukami.jpg",
+          url: "https://randomuser.me/api/portraits/men/1.jpg",
         },
       },
       createdAt: "2022-06-20T09:30:00Z",
       recentPosts: [],
     },
   ]
-  
-  // Add recent posts to each article
-  articles.forEach((article) => {
-    article.recentPosts = articles
-      .filter((a) => a.id !== article.id)
-      .slice(0, 3)
-      .map((a) => ({
-        id: a.id,
-        title: a.title,
-        slug: a.slug,
-        publishedAt: a.publishedAt,
-        description: a.description,
-        content: a.content,
-        createdAt: a.createdAt,
-        coverImage: a.coverImage,
-        author: a.author,
-        categories: a.categories,
-      }))
-  })
+
+const articlesExtended = articles.map((article) => ({
+  ...article,
+  readTime: `${Math.ceil(article.content.trim().split(/\s+/).length / 200)} min read`,
+  recentPosts: articles
+    .filter((a) => a.id !== article.id)
+    .slice(0, 3)
+    .map((a) => ({
+      id: a.id,
+      title: a.title,
+      slug: a.slug,
+      publishedAt: a.publishedAt,
+      description: a.description,
+      content: a.content,
+      createdAt: a.createdAt,
+      coverImage: a.coverImage,
+      author: a.author,
+      categories: a.categories,
+    }))
+}));
+
+export default articlesExtended;
+
   

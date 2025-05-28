@@ -1,11 +1,10 @@
-// lib/api.ts
-import ky from 'ky';
+import ky from "ky";
+import strapiClient from "@/api/api";
 import {
   UserArticleData,
   Article,
   Category,
   StrapiListResponse,
-  StrapiSingleResponse,
   ArticleExtended,
 } from "../types/types";
 
@@ -20,46 +19,63 @@ export const getAllPosts = async (
   searchQuery: string = ""
 ): Promise<{ posts: Article[]; pagination: StrapiListResponse<Article>["meta"]["pagination"] }> => {
   try {
-    // If search query exists, filter posts based on title
-    const searchFilter = searchQuery
-      ? `&filters[title][$containsi]=${searchQuery}`
-      : ""; // Search filter with the title
-    // Fetch posts with pagination and populate the required fields
-    const response = await api.get(
-      `api/blogs?populate=*&pagination[page]=${page}&pagination[pageSize]=${process.env.NEXT_PUBLIC_PAGE_LIMIT}${searchFilter}`
-    ).json<StrapiListResponse<Article>>();
+    const filters = searchQuery ? { title: { $containsi: searchQuery } } : undefined;
+    const response = await strapiClient
+      .collection("blogs")
+      .find({
+        populate: ["author", "categories", "coverImage"],
+        pagination: { page, pageSize: Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6 },
+        filters,
+      });
+    const posts = (response.data ?? []).map((post) => post as unknown as Article);
+    const pagination = response.meta?.pagination ?? { page: 1, pageSize: 0, pageCount: 0, total: 0 };
     return {
-      posts: response.data,
-      pagination: response.meta.pagination, // Return data and include pagination data
+      posts,
+      pagination,
     };
   } catch (error) {
-    console.error("Error fetching blogs:", error);
-    throw new Error("Server error"); // Error handling
+    console.error("Error fetching posts:", error);
+    throw new Error("Failed to fetch posts");
+  }
+};
+
+// Test
+export const getHello = async () => {
+  try {
+    const response = await strapiClient.fetch("articles/hello");
+    return response
+  } catch (error) {
+    console.error("Error fetching hello:", error);
+    throw new Error("Failed to fetch hello");
   }
 };
 
 // Get post by slug
 export const getPostBySlug = async (slug: string): Promise<Article> => {
   try {
-    const response = await api.get(
-      `api/blogs?filters[slug]=${slug}&populate=*`
-    ).json<StrapiListResponse<Article>>(); // Fetch a single blog post using the slug parameter
-    if (response.data.length > 0) {
-      // If post exists
-      return response.data[0]; // Return the post data
+    const response = await strapiClient
+      .collection("blogs")
+      .find({
+        populate: ["author", "categories", "coverImage"],
+        filters: { slug: { $eq: slug } },
+      });
+    const posts = (response.data ?? []) as unknown as Article[];
+    if (posts.length > 0) {
+      return posts[0];
+    } else {
+      throw new Error("Post not found");
     }
-    throw new Error("Post not found.");
   } catch (error) {
-    console.error("Error fetching post:", error);
-    throw new Error("Server error");
+    console.error("Error fetching post by slug:", error);
+    throw new Error("Failed to fetch post by slug");
   }
 };
 
 // Get all posts categories
 export const getAllCategories = async (): Promise<Category[]> => {
   try {
-    const response = await api.get("api/categories").json<StrapiListResponse<Category>>(); // Route to fetch Categories data
-    return response.data; // Return all categories
+    const response = await strapiClient.collection("categories").find();
+    return (response.data ?? []) as unknown as Category[]; // Return all categories
   } catch (error) {
     console.error("Error fetching post:", error);
     throw new Error("Server error");
@@ -88,9 +104,8 @@ export const uploadImage = async (image: File, refId: number): Promise<any> => {
 // Create a blog post and handle all fields
 export const createPost = async (postData: UserArticleData): Promise<Article> => {
   try {
-    const reqData = { data: { ...postData } }; // Strapi required format to post data
-    const response = await api.post("api/blogs", { json: reqData }).json<StrapiSingleResponse<Article>>();
-    return response.data;
+    const response = await strapiClient.collection("blogs").create({ data: postData });
+    return response.data as unknown as Article;
   } catch (error) {
     console.error("Error creating post:", error);
     throw new Error("Failed to create post");
@@ -103,12 +118,17 @@ export const fetchMoreArticles = async (
   pageSize: number = Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6
 ): Promise<{ articles: ArticleExtended[]; pagination: StrapiListResponse<Article>["meta"]["pagination"] }> => {
   try {
-    const response = await api.get(
-      `api/blogs?populate=author,categories,coverImage&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
-    ).json<StrapiListResponse<Article>>();
+    const response = await strapiClient
+      .collection("articles")
+      .find({
+        populate: ["author", "categories", "coverImage"],
+        pagination: { page, pageSize },
+      });
+    const articles = (response.data ?? []) as unknown as ArticleExtended[];
+    const pagination = response.meta?.pagination ?? { page: 1, pageSize: 0, pageCount: 0, total: 0 };
     return {
-      articles: response.data as ArticleExtended[],
-      pagination: response.meta.pagination,
+      articles,
+      pagination,
     };
   } catch (error) {
     console.error("Error fetching more articles:", error);

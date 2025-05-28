@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
+import { ArticlesProvider } from "@/contexts/article";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,7 +77,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-  "theme-color": "#02000f",
   alternates: {
     canonical: "https://jeffmitini.com",
   },
@@ -129,11 +129,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
+          <ArticlesProvider>
+            <div className="flex min-h-screen flex-col">
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+          </ArticlesProvider>
           <Toaster />
         </ThemeProvider>
       </body>
