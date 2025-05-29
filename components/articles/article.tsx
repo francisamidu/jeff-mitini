@@ -1,7 +1,6 @@
 import articles, { authors } from "@/shared/articles";
 import { Link, ArrowRight, Clock } from "lucide-react";
 import React from "react";
-import { ArticleCard } from "../article-card";
 import { AuthorProfile } from "../author-profile";
 import { CategoryList } from "../category-list";
 import { FeaturedArticle } from "../featured-article";
@@ -22,6 +21,7 @@ const ArticleComponent = ({
     : articles[0];
   const regularArticles =
     tempRegularArticles?.length > 0 ? tempRegularArticles : articles.slice(1);
+
   return (
     <div className="container mx-auto px-4">
       <section className="mb-16">
@@ -30,11 +30,11 @@ const ArticleComponent = ({
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {regularArticles.map((article) => (
               <ArticleCard key={article.id} article={article} />
             ))}
-          </div>
+          </div> */}
 
           <ShowMoreButton initialArticles={regularArticles} currentPage={1} />
         </div>
@@ -43,7 +43,7 @@ const ArticleComponent = ({
           <AuthorProfile author={authors[0]} />
 
           <div className="mt-12">
-            <CategoryList />
+            <CategoryList articles={regularArticles} />
           </div>
 
           <div className="mt-12">

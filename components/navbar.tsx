@@ -32,6 +32,8 @@ export default function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
+  const isArticlesPage = pathname === "/articles";
+
   // Focus trap, scroll lock, and Escape key for mobile menu
   useEffect(() => {
     if (!isOpen) return;
@@ -90,7 +92,8 @@ export default function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 px-2 md:px-0 w-full transition-all duration-200",
-        isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-background"
+        isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-background",
+        isArticlesPage && isScrolled ? "shadow" : ""
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between">

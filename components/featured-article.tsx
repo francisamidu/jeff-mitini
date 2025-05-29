@@ -9,6 +9,7 @@ interface FeaturedArticleProps {
 }
 
 export function FeaturedArticle({ article }: FeaturedArticleProps) {
+  console.log(article);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden">
@@ -42,11 +43,12 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
             {article.title}
           </Link>
         </h1>
+        <p className="text-gray-600 mb-4 line-clamp-2">{article.description}</p>
         <div className="flex items-center gap-4 mb-6">
           <div className="relative h-8 w-8 rounded-full overflow-hidden">
             <Image
-              src={article.author.avatar.url || "/images/bree-mukami.jpg"}
-              alt={article.author.name}
+              src={article.author?.avatar?.url || "/jeff.jpg"}
+              alt={article.author?.name}
               fill
               className="object-cover"
             />
@@ -62,7 +64,7 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
         </div>
         <Button
           asChild
-          className="group bg-secondary rounded-none hover:bg-secondary/90 w-fit"
+          className="group bg-foreground rounded-none hover:bg-foreground/90 w-fit"
         >
           <Link href={`/articles/${article.slug}`}>
             Read Article

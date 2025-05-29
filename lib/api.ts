@@ -6,7 +6,9 @@ import {
   Category,
   StrapiListResponse,
   ArticleExtended,
+  ArticleResponse,
 } from "../types/types";
+import { transformArticle } from "./utils";
 
 export const api = ky.create({
   prefixUrl: process.env.NEXT_PUBLIC_STRAPI_URL,
@@ -137,22 +139,17 @@ export const fetchMoreArticles = async (
 }> => {
   try {
     const response = await strapiClient.collection("articles").find({
-      populate: {
-        author: "*",
-        categories: {
-          populate: ["articles"],
-        },
-        coverImage: "*",
-      },
+      populate: ["author", "categories", "coverImage"],
       pagination: { page, pageSize },
     });
-    const articles = (response.data ?? []) as unknown as ArticleExtended[];
     const pagination = response.meta?.pagination ?? {
       page: 1,
       pageSize: 0,
       pageCount: 0,
       total: 0,
     };
+    const articles = transformArticle(response as unknown as ArticleResponse);
+    console.log(articles);
     return {
       articles,
       pagination,

@@ -59,14 +59,7 @@ const articles: Article[] = [
     coverImage: {
       url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    author: {
-      id: 1,
-      name: "Bree Mukami",
-      email: "bree.mukami@example.com",
-      avatar: {
-        url: "https://randomuser.me/api/portraits/men/1.jpg",
-      },
-    },
+    author: authors[0],
     createdAt: "2022-09-25T10:00:00Z",
     recentPosts: [],
   },
@@ -136,14 +129,7 @@ const articles: Article[] = [
     coverImage: {
       url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    author: {
-      id: 1,
-      name: "Bree Mukami",
-      email: "bree.mukami@example.com",
-      avatar: {
-        url: "https://randomuser.me/api/portraits/men/1.jpg",
-      },
-    },
+    author: authors[0],
     createdAt: "2022-09-11T14:30:00Z",
     recentPosts: [],
   },
@@ -229,14 +215,7 @@ const articles: Article[] = [
     coverImage: {
       url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    author: {
-      id: 1,
-      name: "Bree Mukami",
-      email: "bree.mukami@example.com",
-      avatar: {
-        url: "https://randomuser.me/api/portraits/men/1.jpg",
-      },
-    },
+    author: authors[0],
     createdAt: "2022-09-07T09:15:00Z",
     recentPosts: [],
   },
@@ -323,14 +302,7 @@ const articles: Article[] = [
     coverImage: {
       url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    author: {
-      id: 1,
-      name: "Bree Mukami",
-      email: "bree.mukami@example.com",
-      avatar: {
-        url: "https://randomuser.me/api/portraits/men/1.jpg",
-      },
-    },
+    author: authors[0],
     createdAt: "2022-08-11T11:45:00Z",
     recentPosts: [],
   },
@@ -441,14 +413,7 @@ const articles: Article[] = [
     coverImage: {
       url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    author: {
-      id: 1,
-      name: "Bree Mukami",
-      email: "bree.mukami@example.com",
-      avatar: {
-        url: "https://randomuser.me/api/portraits/men/1.jpg",
-      },
-    },
+    author: authors[0],
     createdAt: "2022-07-15T10:00:00Z",
     recentPosts: [],
   },
@@ -530,14 +495,7 @@ const articles: Article[] = [
     coverImage: {
       url: "https://images.unsplash.com/photo-1747258294931-79af146bd74c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    author: {
-      id: 1,
-      name: "Bree Mukami",
-      email: "bree.mukami@example.com",
-      avatar: {
-        url: "https://randomuser.me/api/portraits/men/1.jpg",
-      },
-    },
+    author: authors[0],
     createdAt: "2022-06-20T09:30:00Z",
     recentPosts: [],
   },

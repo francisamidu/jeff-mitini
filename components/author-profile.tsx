@@ -17,12 +17,8 @@ export function AuthorProfile({
           className="object-cover"
         />
       </div>
-      <h3 className="text-xl font-bold mb-2">Bree Mukami</h3>
-      <p className="text-gray-600 text-sm mb-4">
-        Hello, I am a content writer who is fascinated by content creation,
-        culture, and lifestyle. I help clients bring the right content to the
-        right people.
-      </p>
+      <h3 className="text-xl font-bold mb-2">{author.name}</h3>
+      <p className="text-gray-600 text-sm mb-4">{author.bio}</p>
       <div className="flex justify-center mb-4">
         <SocialIcons />
       </div>

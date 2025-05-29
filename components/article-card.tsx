@@ -35,16 +35,18 @@ export function ArticleCard({ article }: ArticleCardProps) {
         <Link href={`/articles/${article.slug}`}>{article.title}</Link>
       </h3>
       <p className="text-gray-600 mb-4 line-clamp-2">{article.description}</p>
-      <div className="flex items-center gap-3">
-        <div className="relative h-6 w-6 rounded-full overflow-hidden">
-          <Image
-            src={article.author.avatar.url || "/images/bree-mukami.jpg"}
-            alt={article.author.name}
-            fill
-            className="object-cover"
-          />
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="relative h-6 w-6 rounded-full overflow-hidden">
+            <Image
+              src={article.author.avatar.url || "/images/bree-mukami.jpg"}
+              alt={article.author.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <span className="text-xs text-gray-600">{article.author.name}</span>
         </div>
-        <span className="text-xs text-gray-600">{article.author.name}</span>
         <span className="text-xs text-gray-500">
           {new Date(article.publishedAt).toLocaleDateString("en-US", {
             month: "long",

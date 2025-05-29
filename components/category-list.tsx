@@ -1,14 +1,22 @@
 import Link from "next/link";
+import { ArticleExtended } from "@/types/types";
 
-export function CategoryList() {
-  const categories = [
-    { name: "Culture", count: 7 },
-    { name: "Fashion", count: 5 },
-    { name: "Health", count: 4 },
-    { name: "Inspiration", count: 5 },
-    { name: "Lifestyle", count: 6 },
-    { name: "Travel", count: 8 },
-  ];
+export function CategoryList({ articles }: { articles: ArticleExtended[] }) {
+  const tempCategories = articles.reduce((acc, article) => {
+    article.categories.forEach((category) => {
+      if (!acc[category.name]) {
+        acc[category.name] = 1;
+      } else {
+        acc[category.name]++;
+      }
+    });
+    return acc;
+  }, {} as Record<string, number>);
+
+  const categories = Object.entries(tempCategories).map(([name, count]) => ({
+    name,
+    count,
+  }));
 
   return (
     <div>
