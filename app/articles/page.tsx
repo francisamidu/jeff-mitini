@@ -2,6 +2,7 @@ import { fetchMoreArticles, getHello } from "@/lib/api";
 import Article from "@/components/articles/article";
 import { ArticleExtended } from "@/types/types";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Jeff Mitini | Articles",
@@ -18,11 +19,11 @@ export default async function ArticlesPage(props: {
   const { articles } = await fetchMoreArticles(page, pageSize);
 
   return (
-    <main>
+    <Suspense fallback={<div>Loading...</div>}>
       <Article
-        tempFeaturedArticle={articles[0]}
-        tempRegularArticles={articles.slice(1)}
+        featuredArticle={articles[0]}
+        regularArticles={articles.slice(1)}
       />
-    </main>
+    </Suspense>
   );
 }

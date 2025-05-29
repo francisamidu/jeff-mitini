@@ -8,20 +8,15 @@ import { Newsletter } from "../newsletter";
 import { ShowMoreButton } from "../show-more-button";
 import Image from "next/image";
 import { ArticleExtended as Article } from "@/types/types";
+import { ArticleCard } from "../article-card";
 
 const ArticleComponent = ({
-  tempFeaturedArticle = articles[0],
-  tempRegularArticles = articles.slice(1),
+  featuredArticle,
+  regularArticles,
 }: {
-  tempFeaturedArticle: Article;
-  tempRegularArticles: Article[];
+  featuredArticle: Article;
+  regularArticles: Article[];
 }) => {
-  const featuredArticle = tempFeaturedArticle?.id
-    ? tempFeaturedArticle
-    : articles[0];
-  const regularArticles =
-    tempRegularArticles?.length > 0 ? tempRegularArticles : articles.slice(1);
-
   return (
     <div className="container mx-auto px-4">
       <section className="mb-16">
@@ -30,13 +25,15 @@ const ArticleComponent = ({
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {regularArticles.map((article) => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
-          </div> */}
-
-          <ShowMoreButton initialArticles={regularArticles} currentPage={1} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {regularArticles.length > 0 ? (
+              regularArticles.map((article) => (
+                <ArticleCard key={article.id} article={article} />
+              ))
+            ) : (
+              <p>No articles found</p>
+            )}
+          </div>
         </div>
 
         <div className="lg:col-span-1">

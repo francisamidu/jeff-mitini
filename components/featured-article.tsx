@@ -55,7 +55,9 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
           </div>
           <span className="text-sm text-gray-600">{article.author.name}</span>
           <span className="text-sm text-gray-500">
-            {new Date(article.publishedAt).toLocaleDateString("en-US", {
+            {new Date(
+              article.publishedAt || article.createdAt
+            ).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
               year: "numeric",

@@ -149,7 +149,6 @@ export const fetchMoreArticles = async (
       total: 0,
     };
     const articles = transformArticle(response as unknown as ArticleResponse);
-    console.log(articles);
     return {
       articles,
       pagination,
