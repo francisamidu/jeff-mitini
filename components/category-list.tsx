@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArticleExtended } from "@/types/types";
 
 export function CategoryList({ articles }: { articles: ArticleExtended[] }) {
+  console.log(articles);
   const tempCategories = articles.reduce((acc, article) => {
     article.categories.forEach((category) => {
       if (!acc[category.name]) {

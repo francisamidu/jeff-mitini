@@ -1,6 +1,6 @@
-// app/posts/error.tsx
 "use client";
 
+import { SomethingWentWrong } from "@/components/something-went-wrong";
 import { useEffect } from "react";
 
 export default function Error({
@@ -11,14 +11,22 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button onClick={() => reset()}>Try again</button>
-    </div>
+    <SomethingWentWrong
+      errorType="generic"
+      title="Something went wrong"
+      message="Please try again"
+      primaryAction={{
+        onClick: reset,
+        text: "Try again",
+      }}
+      secondaryAction={{
+        onClick: () => {},
+        text: "Cancel",
+      }}
+    />
   );
 }

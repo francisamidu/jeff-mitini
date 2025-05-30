@@ -14,11 +14,12 @@ export const api = ky.create({
   prefixUrl: process.env.NEXT_PUBLIC_STRAPI_URL,
 });
 
-export const getAllPosts = async (
+export const getAllArticles = async (
   page: number = 1,
+  pageSize: number = Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6,
   searchQuery: string = ""
 ): Promise<{
-  posts: Article[];
+  articles: ArticleExtended[];
   pagination: StrapiListResponse<Article>["meta"]["pagination"];
 }> => {
   try {
@@ -29,12 +30,12 @@ export const getAllPosts = async (
       populate: ["author", "categories", "coverImage"],
       pagination: {
         page,
-        pageSize: Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6,
+        pageSize,
       },
       filters,
     });
-    const posts = (response.data ?? []).map(
-      (post) => post as unknown as Article
+    const articles = (response.data ?? []).map((post) =>
+      transformArticle(post as unknown as Article)
     );
     const pagination = response.meta?.pagination ?? {
       page: 1,
@@ -43,12 +44,12 @@ export const getAllPosts = async (
       total: 0,
     };
     return {
-      posts,
+      articles,
       pagination,
     };
   } catch (error) {
-    console.error("Error fetching posts:", error);
-    throw new Error("Failed to fetch posts");
+    console.error("Error fetching articles:", error);
+    throw new Error("Failed to fetch articles");
   }
 };
 
@@ -63,32 +64,34 @@ export const getHello = async () => {
   }
 };
 
-// Get post by slug
-export const getPostBySlug = async (slug: string): Promise<Article> => {
+// Get article by slug
+export const getArticleBySlug = async (
+  slug: string
+): Promise<ArticleExtended> => {
   try {
-    const response = await strapiClient.collection("articles").find({
+    const response = await strapiClient.collection("articles").findOne(slug, {
       populate: ["author", "categories", "coverImage"],
       filters: { slug: { $eq: slug } },
     });
-    const posts = (response.data ?? []) as unknown as Article[];
-    if (posts.length > 0) {
-      return posts[0];
+    const article = (response.data ?? {}) as unknown as Article;
+    if (article) {
+      return transformArticle(article);
     } else {
-      throw new Error("Post not found");
+      throw new Error("Article not found");
     }
   } catch (error) {
-    console.error("Error fetching post by slug:", error);
-    throw new Error("Failed to fetch post by slug");
+    console.error("Error fetching article by slug:", error);
+    throw new Error("Failed to fetch article by slug");
   }
 };
 
-// Get all posts categories
+// Get all article categories
 export const getAllCategories = async (): Promise<Category[]> => {
   try {
     const response = await strapiClient.collection("categories").find();
     return (response.data ?? []) as unknown as Category[]; // Return all categories
   } catch (error) {
-    console.error("Error fetching post:", error);
+    console.error("Error fetching categories:", error);
     throw new Error("Server error");
   }
 };
@@ -129,32 +132,41 @@ export const createPost = async (
   }
 };
 
-// Fetch more articles for pagination/infinite scroll
-export const fetchMoreArticles = async (
+// Fetch articles with categories
+export const fetchArticlesWithCategories = async (
   page: number = 1,
-  pageSize: number = Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6
+  pageSize: number = Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6,
+  category: string
 ): Promise<{
   articles: ArticleExtended[];
-  pagination: StrapiListResponse<Article>["meta"]["pagination"];
+  pagination: StrapiListResponse<Article>["meta"];
 }> => {
   try {
-    const response = await strapiClient.collection("articles").find({
-      populate: ["author", "categories", "coverImage"],
-      pagination: { page, pageSize },
+    const response = await api.get("articles-with-category", {
+      headers: {
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
+      },
+      searchParams: {
+        page,
+        pageSize,
+        categories: category,
+      },
     });
-    const pagination = response.meta?.pagination ?? {
-      page: 1,
-      pageSize: 0,
-      pageCount: 0,
-      total: 0,
-    };
-    const articles = transformArticle(response as unknown as ArticleResponse);
+    const result: ArticleResponse = await response.json();
+    const articles = result.data.map((article) =>
+      transformArticle(article as unknown as Article)
+    );
     return {
       articles,
-      pagination,
+      pagination: result.meta?.pagination || {
+        page: 1,
+        pageSize: 0,
+        pageCount: 0,
+        total: 0,
+      },
     };
   } catch (error) {
-    console.error("Error fetching more articles:", error);
-    throw new Error("Failed to fetch more articles");
+    console.error(error);
+    throw error;
   }
 };

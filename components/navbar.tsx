@@ -32,7 +32,7 @@ export default function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
-  const isArticlesPage = pathname === "/articles";
+  const isArticlesPage = pathname === "/articles" || pathname === "/articles/*";
 
   // Focus trap, scroll lock, and Escape key for mobile menu
   useEffect(() => {

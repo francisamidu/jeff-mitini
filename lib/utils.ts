@@ -1,4 +1,4 @@
-import { ArticleExtended, ArticleResponse } from "@/types/types";
+import { Article, ArticleExtended, ArticleResponse } from "@/types/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import slugify from "react-slugify";
@@ -7,16 +7,14 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function transformArticle(
-  articleResponse: ArticleResponse
-): ArticleExtended[] {
-  return articleResponse.map((article) => ({
+export function transformArticle(article: Article): ArticleExtended {
+  return {
     author: {
       id: article.author.id,
       bio: article.author.bio,
       name: article.author.name,
       email: article.author.email,
-      avatar: article.author.avatar,
+      avatar: article.author.avatar || { url: "/jeff.jpg" },
     },
     content: article.content,
     createdAt: article.createdAt,
@@ -24,7 +22,7 @@ export function transformArticle(
     description: article.description,
     id: article.id,
     title: article.title,
-    slug: sluggify(article.title),
+    slug: article.slug || sluggify(article.title),
     coverImage: article.coverImage || {
       url: "https://images.unsplash.com/photo-1541844053589-346841d0b34c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
@@ -35,7 +33,7 @@ export function transformArticle(
       name: category.name,
       id: category.id,
     })),
-  }));
+  };
 }
 
 export function sluggify(str: string) {

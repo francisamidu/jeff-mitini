@@ -33,7 +33,10 @@ export interface Article {
   publishedAt: string;
 }
 
-export type ArticleResponse = Article[];
+export type ArticleResponse = {
+  data: ArticleExtended[];
+  meta: any;
+};
 
 export interface CommentData {
   name: string;

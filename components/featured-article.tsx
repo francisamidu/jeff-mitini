@@ -9,7 +9,6 @@ interface FeaturedArticleProps {
 }
 
 export function FeaturedArticle({ article }: FeaturedArticleProps) {
-  console.log(article);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden">
