@@ -6,8 +6,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+import { subscribeToNewsletter } from "@/lib/api";
+import { Label } from "./ui/label";
+import { toast } from "sonner";
+
 export function Newsletter() {
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    fullName: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -18,10 +25,12 @@ export function Newsletter() {
     setError("");
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await subscribeToNewsletter(user.email, user.fullName);
       setIsSuccess(true);
-      setEmail("");
+      setUser({ email: "", fullName: "" });
+      toast(
+        "You have been added to the newsletter. Check your email for confirmation."
+      );
     } catch (err) {
       setError("Failed to subscribe. Please try again.");
     } finally {
@@ -42,19 +51,38 @@ export function Newsletter() {
           Thank you for subscribing to my newsletter!
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex gap-2">
-          <Input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="flex-1"
-          />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+          <div>
+            <Label htmlFor="name" className="font-medium">
+              Full name <span className="text-red-500">*</span>
+            </Label>
+            <Input
+              type="text"
+              placeholder="Enter your full name"
+              value={user.fullName}
+              onChange={(e) => setUser({ ...user, fullName: e.target.value })}
+              required
+              className="flex-1 mt-2"
+            />
+          </div>
+          <div>
+            <Label htmlFor="name" className="font-medium">
+              Email <span className="text-red-500">*</span>
+            </Label>
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              required
+              className="flex-1 mt-2"
+            />
+          </div>
+
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="group bg-secondary hover:bg-secondary/90"
+            className="group bg-secondary hover:bg-secondary/90 mt-2"
           >
             {isSubmitting ? "..." : "Subscribe"}
           </Button>

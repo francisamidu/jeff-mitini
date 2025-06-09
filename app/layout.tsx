@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-icon.png",
   },
   manifest: "/site.webmanifest",
   alternates: {
@@ -95,7 +95,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#02000f" />
-        {/* Structured Data for Person */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

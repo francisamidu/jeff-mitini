@@ -1,5 +1,5 @@
+import { strapi } from "@strapi/client";
 import ky from "ky";
-import strapiClient from "@/api/api";
 import {
   UserArticleData,
   Article,
@@ -14,6 +14,11 @@ export const api = ky.create({
   prefixUrl: process.env.NEXT_PUBLIC_STRAPI_URL,
 });
 
+const client = strapi({
+  baseURL: process.env.NEXT_PUBLIC_STRAPI_URL,
+  auth: process.env.NEXT_PUBLIC_STRAPI_TOKEN,
+});
+
 export const getAllArticles = async (
   page: number = 1,
   pageSize: number = Number(process.env.NEXT_PUBLIC_PAGE_LIMIT) || 6,
@@ -26,7 +31,7 @@ export const getAllArticles = async (
     const filters = searchQuery
       ? { title: { $containsi: searchQuery } }
       : undefined;
-    const response = await strapiClient.collection("articles").find({
+    const response = await client.collection("articles").find({
       populate: ["author", "categories", "coverImage"],
       pagination: {
         page,
@@ -56,7 +61,7 @@ export const getAllArticles = async (
 // Test
 export const getHello = async () => {
   try {
-    const response = await strapiClient.fetch("articles/hello");
+    const response = await client.fetch("articles/hello");
     return response.json();
   } catch (error) {
     console.error("Error fetching hello:", error);
@@ -69,7 +74,7 @@ export const getArticleBySlug = async (
   slug: string
 ): Promise<ArticleExtended> => {
   try {
-    const response = await strapiClient.collection("articles").findOne(slug, {
+    const response = await client.collection("articles").findOne(slug, {
       populate: ["author", "categories", "coverImage"],
       filters: { slug: { $eq: slug } },
     });
@@ -88,7 +93,7 @@ export const getArticleBySlug = async (
 // Get all article categories
 export const getAllCategories = async (): Promise<Category[]> => {
   try {
-    const response = await strapiClient.collection("categories").find();
+    const response = await client.collection("categories").find();
     return (response.data ?? []) as unknown as Category[]; // Return all categories
   } catch (error) {
     console.error("Error fetching categories:", error);
@@ -122,7 +127,7 @@ export const createPost = async (
   postData: UserArticleData
 ): Promise<Article> => {
   try {
-    const response = await strapiClient
+    const response = await client
       .collection("articles")
       .create({ data: postData });
     return response.data as unknown as Article;
@@ -141,6 +146,7 @@ export const fetchArticlesWithCategories = async (
   articles: ArticleExtended[];
   pagination: StrapiListResponse<Article>["meta"];
 }> => {
+  console.log("called with category");
   try {
     const response = await api.get("articles-with-category", {
       headers: {
@@ -167,6 +173,25 @@ export const fetchArticlesWithCategories = async (
     };
   } catch (error) {
     console.error(error);
+    throw error;
+  }
+};
+
+// Subscribe to newsletter
+export const subscribeToNewsletter = async (
+  email: string,
+  fullName: string
+) => {
+  try {
+    const response = await ky.post("/api/newsletter-handler", {
+      headers: {
+        authorization: `Bearer ${process.env.NEXT_STRAPI_WEBHOOK_SECRET}`,
+      },
+      body: JSON.stringify({ email, fullName }),
+    });
+    return response.json();
+  } catch (error) {
+    console.error("Error subscribing to newsletter:", error);
     throw error;
   }
 };

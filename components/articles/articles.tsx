@@ -1,14 +1,13 @@
-import articles, { authors } from "@/shared/articles";
-import { Link, ArrowRight, Clock } from "lucide-react";
+import { authors } from "@/shared/articles";
 import React from "react";
 import { AuthorProfile } from "../author-profile";
 import { CategoryList } from "../category-list";
 import { FeaturedArticle } from "../featured-article";
 import { Newsletter } from "../newsletter";
-import { ShowMoreButton } from "../show-more-button";
 import Image from "next/image";
 import { ArticleExtended as Article } from "@/types/types";
 import { ArticleCard } from "../article-card";
+import Link from "next/link";
 
 const ArticleComponent = ({
   featuredArticle,
@@ -56,7 +55,7 @@ const ArticleComponent = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {articles.slice(0, 4).map((article) => (
+          {regularArticles.slice(0, 4).map((article) => (
             <div key={article.id} className="group">
               <div className="relative h-48 mb-3 overflow-hidden rounded-lg">
                 <Image

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { getAllArticles, getArticleBySlug } from "@/lib/api";
 import { CommentForm } from "@/components/comment-form";
 import { Newsletter } from "@/components/newsletter";
-import { notFound } from "next/navigation";
 import { Clock, Calendar, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
@@ -35,15 +34,11 @@ export default async function ArticlePage({
 
   const { articles } = await getAllArticles();
 
-  if (!article) {
-    notFound();
-  }
-
   return (
     <main>
       <Suspense fallback={<ArticleSkeleton />}>
         <div className="grid grid-cols-4 gap-8 px-4">
-          <Article article={article} />
+          <Article article={article} articles={articles} />
           <div className="grid grid-cols-1 gap-8 max-h-[calc(100vh-20rem)] overflow-y-auto scroll-mr-10">
             {articles.length > 0 ? (
               articles.map((article) => (

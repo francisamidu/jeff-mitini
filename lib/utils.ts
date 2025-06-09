@@ -1,10 +1,18 @@
-import { Article, ArticleExtended, ArticleResponse } from "@/types/types";
+import { Article, ArticleExtended } from "@/types/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import slugify from "react-slugify";
+import { z } from "zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+export function sluggify(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "-")
+    .replace(/-{2,}/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 export function transformArticle(article: Article): ArticleExtended {
@@ -22,7 +30,7 @@ export function transformArticle(article: Article): ArticleExtended {
     description: article.description,
     id: article.id,
     title: article.title,
-    slug: article.slug || sluggify(article.title),
+    slug: article.slug,
     coverImage: article.coverImage || {
       url: "https://images.unsplash.com/photo-1541844053589-346841d0b34c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
@@ -36,6 +44,13 @@ export function transformArticle(article: Article): ArticleExtended {
   };
 }
 
-export function sluggify(str: string) {
-  return slugify(str);
-}
+const emailSchema = z.string().email();
+
+export const validateEmail = (email: string) => {
+  try {
+    emailSchema.parse(email);
+    return true;
+  } catch {
+    return false;
+  }
+};

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArticleExtended } from "@/types/types";
 
 export function CategoryList({ articles }: { articles: ArticleExtended[] }) {
-  console.log(articles);
   const tempCategories = articles.reduce((acc, article) => {
     article.categories.forEach((category) => {
       if (!acc[category.name]) {
@@ -26,7 +25,7 @@ export function CategoryList({ articles }: { articles: ArticleExtended[] }) {
         {categories.map((category) => (
           <li key={category.name} className="flex justify-between items-center">
             <Link
-              href={`/category/${category.name.toLowerCase()}`}
+              href={`/articles/?category=${category.name.toLowerCase()}`}
               className="text-gray-700 hover:text-secondary transition-colors"
             >
               {category.name}

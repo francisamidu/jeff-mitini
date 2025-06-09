@@ -21,14 +21,13 @@ export default async function ArticlesPage(props: {
   const category = searchParams.category;
   const getArticles = unstable_cache(
     async () => {
-      return category && category !== "all"
+      return category
         ? await fetchArticlesWithCategories(page, pageSize, category as string)
         : await getAllArticles(page);
     },
     ["articles"],
     { revalidate: 3600, tags: ["articles"] }
   );
-
   const result = await getArticles();
 
   return (

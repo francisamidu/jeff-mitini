@@ -1,14 +1,24 @@
 import React from "react";
 import Image from "next/image";
-import { Clock, Calendar } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Calendar } from "lucide-react";
+import parse from "html-react-parser";
 import { ArticleExtended } from "@/types/types";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Newsletter } from "@/components/newsletter";
 import { sluggify } from "@/lib/utils";
 
-const Article = ({ article }: { article: ArticleExtended }) => {
+const Article = ({
+  article,
+  articles,
+}: {
+  article: ArticleExtended;
+  articles: ArticleExtended[];
+}) => {
+  const articleIndex = articles.findIndex((a) => a.id === article.id);
+  const prevArticle = articles[articleIndex - 1];
+  const nextArticle = articles[articleIndex + 1];
+  console.log(parse(article.content));
   return (
     <div className="pl-4 col-span-3 my-3">
       <div className="mb-8">
@@ -82,8 +92,11 @@ const Article = ({ article }: { article: ArticleExtended }) => {
             </Link>
           </Button>
           <Button variant="outline" size="sm" asChild>
-            <Link href="/latest-articles" className="flex items-center gap-2">
-              More Articles
+            <Link
+              href={`/articles/${nextArticle.slug}`}
+              className="flex items-center gap-2"
+            >
+              Next Article
               <ArrowRight size={16} />
             </Link>
           </Button>
