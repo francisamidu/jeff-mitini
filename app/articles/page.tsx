@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { unstable_cache } from "next/cache";
 import { Suspense } from "react";
 import ArticlesSkeleton from "@/components/articles/ArticlesSkeleton";
+import EmptyArticles from "@/components/articles/EmptyArticles";
 
 export const metadata: Metadata = {
   title: "Jeff Mitini | Articles",
@@ -32,11 +33,13 @@ export default async function ArticlesPage(props: {
 
   return (
     <Suspense fallback={<ArticlesSkeleton />}>
-      {result?.articles.length > 0 && (
+      {result?.articles.length > 0 ? (
         <Article
           featuredArticle={result.articles[0]}
           regularArticles={result.articles}
         />
+      ) : (
+        <EmptyArticles />
       )}
     </Suspense>
   );

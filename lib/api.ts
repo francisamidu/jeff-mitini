@@ -48,6 +48,7 @@ export const getAllArticles = async (
       pageCount: 0,
       total: 0,
     };
+    console.log(articles);
     return {
       articles,
       pagination,
